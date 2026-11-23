@@ -56,6 +56,18 @@ const remember = (key: string, v: { mask: Uint8Array; w: number; h: number }) =>
 
 const iconKey = (name: string, filled: boolean) => `${name}\u0000${filled ? 1 : 0}`;
 
+/** When a load failed (ill-formed ids are not in here: they stay failed). */
+const iconFailed = new Map<string, number>();
+
+/** Status of an icon in the cache ("none": no icon source, or not a well-formed id). */
+export const iconStatus = (name: string, filled = false): "loaded" | "error" | "loading" | "missing" | "none" => {
+  const id = name.trim();
+  if (!iconSource() || !parseIconId(id)) return "none";
+  const key = iconKey(id, filled);
+  const v = icons.get(key);
+  return v === "error" ? "error" : v ? "loaded" : iconLoads.has(key) ? "loading" : "missing";
+};
+
 /** Status of an image URL in the cache. */
 export const imageStatus = (src: string): "loaded" | "error" | "loading" | "missing" => {
   const v = images.get(src);
@@ -148,6 +160,8 @@ export function sizedSvg(svg: string): { svg: string; size: { w: number; h: numb
 async function loadIcon(name: string, filled: boolean) {
   const key = iconKey(name, filled);
   const src = iconSource();
+  // A failed load is not for good: ask again after a while (a server restart, an icon uploaded later).
+  if (icons.get(key) === "error" && Date.now() - (iconFailed.get(key) ?? Infinity) > 15_000) icons.delete(key);
   if (icons.has(key) || !src || !name) return;
   // Ill-formed ids (e.g. an unfilled field) paint the placeholder without a request.
   if (!parseIconId(name)) return void icons.set(key, "error");
@@ -158,6 +172,7 @@ async function loadIcon(name: string, filled: boolean) {
       .catch((e) => {
         console.warn(`icon ${name} failed to load`, e);
         icons.set(key, "error");
+        iconFailed.set(key, Date.now());
       })
       .finally(() => iconLoads.delete(key));
     iconLoads.set(key, p);

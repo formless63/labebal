@@ -1,8 +1,5 @@
 "use client";
-/**
- * Registers the app's icon source with the core renderer (SVGs from
- * /api/icons/<id>, any set). Import for its side effect wherever labels are rendered.
- */
+/** Icon search and the icon source the core renderer draws from (SVGs from /api/icons/<id>, any set). */
 import { setIconSource } from "@labebal/core";
 import { apiRoot } from "../../lib/base";
 
@@ -45,9 +42,26 @@ export async function fetchIconSets(): Promise<IconSetInfo[]> {
 /** SVG URL for an icon id (`:` is percent-encoded). */
 export const iconUrl = (id: string, filled = false) => `${iconsApi()}/${encodeURIComponent(id)}${filled ? "?filled=1" : ""}`;
 
-if (typeof window !== "undefined")
+const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
+/**
+ * Tell the core renderer where icons come from. Called by the app's entry
+ * (client.tsx): the package is marked side-effect free, so a bundler drops a
+ * module that only registers itself when imported.
+ */
+export function registerIconSource() {
+  if (typeof window === "undefined") return;
   setIconSource(async (id, filled) => {
-    const res = await fetch(iconUrl(id, filled));
-    if (!res.ok) throw new Error(`icon ${id}: ${res.status}`);
-    return res.text();
+    for (let attempt = 0; ; attempt++) {
+      try {
+        const res = await fetch(iconUrl(id, filled));
+        if (res.ok) return await res.text();
+        // Unknown icon: no point asking again. Server busy or restarting: try again.
+        if (res.status < 500 || attempt >= 2) throw Object.assign(new Error(`icon ${id}: ${res.status}`), { final: true });
+      } catch (err) {
+        if ((err as { final?: boolean }).final || attempt >= 2) throw err;
+      }
+      await wait(400 * 2 ** attempt);
+    }
   });
+}

@@ -15,6 +15,7 @@ import type { LaidOut } from "./layout";
 import { inkCoverage, renderLabel, type NodeFacts, type RenderOptions, type RenderResult } from "./render";
 import { resolveLabel } from "./rules";
 import { templateNodeId } from "./parts";
+import { iconStatus, imageStatus } from "./elements";
 import { placeholdersIn, boundText, type Label, type LabelNode, type Template } from "./schema";
 
 export type PreflightSeverity = "error" | "warning" | "info";
@@ -31,6 +32,7 @@ export type PreflightRule =
   | "dead-zone"
   | "bleed-strips"
   | "empty-field"
+  | "not-loaded"
   | "heavy-ink";
 
 export interface PreflightIssue {
@@ -110,6 +112,10 @@ export function preflight(
     if (!f) continue;
     const isRoot = it === r.layout.items[0];
     if (it.node.type === "text") textChecks(it, f, add);
+    if (it.node.type === "icon" && it.text?.trim() && ["error", "missing"].includes(iconStatus(it.text, !!it.node.filled)))
+      add(it, { rule: "not-loaded", severity: "error", message: `The icon "${it.text.trim()}" didn't load, so a crossed box prints instead.`, fix: "Check the connection and try again, or pick another icon." });
+    if (it.node.type === "image" && it.text?.trim() && imageStatus(it.text) === "error")
+      add(it, { rule: "not-loaded", severity: "error", message: "The picture didn't load, so a crossed box prints instead.", fix: "Check the connection and try again, or pick another picture." });
     if (it.node.type === "code") codeChecks(it, f, o, add, dotAt);
     if (!isRoot && !it.copyOf) emptyFieldCheck(it, values, fieldLabel, add);
     if (!isRoot && paints(it.node) && outside(f, o)) {

@@ -1,5 +1,4 @@
 "use client";
-import "../labels/icons-client";
 import { useFontAssets } from "./fonts-client";
 
 /**

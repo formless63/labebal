@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { preloadAssets, renderLabel, type IconNode, type Template } from "@labebal/core";
-import "../labels/icons-client";
 import { cn } from "../../lib/utils";
 
 /**

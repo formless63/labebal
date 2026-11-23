@@ -2,17 +2,19 @@
 import { join, dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { GlobalFonts, createCanvas as napiCanvas } from "@napi-rs/canvas";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from "vitest";
 import { registerTestFonts } from "./fixtures/fonts";
 import {
-  BUILTIN_FONTS,
+  iconStatus,
   issuesByNode,
   labelPixels,
   loadCodeEncoder,
   preflight,
   preflightSummary,
+  preloadAssets,
   printerFor,
   setCanvasFactory,
+  setIconSource,
   sizeById,
   type LabelNode,
   type PreflightOptions,
@@ -77,6 +79,30 @@ describe("text", () => {
     expect(rules(tpl([small]), { title: "HI" })).toContain("text-small:a");
     const ok = text("a", 1, 1, 30, 8, { font: "Test Pixel 8", sizePt: 8 });
     expect(rules(tpl([ok]), { title: "HI" })).toEqual([]);
+  });
+});
+
+describe("icons", () => {
+  const icon = (name: string): LabelNode => ({ id: "i", type: "icon", icon: name, color: "black", x: 1, y: 1, w: { kind: "fixed", mm: 8 }, h: { kind: "fixed", mm: 8 } });
+  afterEach(() => setIconSource(null));
+
+  it("reports an icon that didn't load, and asks for it again later", async () => {
+    let up = false;
+    setIconSource(async () => {
+      if (!up) throw new Error("offline");
+      return '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>';
+    });
+    const t = tpl([icon("mdi:retry-me")]);
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+    await preloadAssets(t);
+    expect(iconStatus("mdi:retry-me")).toBe("error");
+    expect(rules(t, {})).toContain("not-loaded:i");
+    up = true;
+    vi.useFakeTimers({ now: Date.now() + 20_000, toFake: ["Date"] });
+    await preloadAssets(t);
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+    expect(iconStatus("mdi:retry-me")).toBe("loaded");
   });
 });
 

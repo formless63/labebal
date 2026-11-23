@@ -15,6 +15,7 @@ import { DialogHost } from "./components/dialogs";
 import { Toaster } from "./components/ui/sonner";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { FontsProvider } from "./features/fonts/FontsProvider";
+import { registerIconSource } from "./features/labels/icons-client";
 import { LabelUrlSync } from "./features/label-page/LabelUrlSync";
 import { NetPrintersSync } from "./features/netprinters/api";
 import { PrintFormHost } from "./features/print-form/PrintFormHost";
@@ -24,6 +25,8 @@ import { apiRoot, appBase, setBasePath } from "./lib/base";
 import { matchScreen, ParamsProvider, RouterProvider, usePathname, type RouterAdapter, type ScreenRoute } from "./lib/router";
 import { PortalContainerProvider } from "./lib/portal";
 import { cn } from "./lib/utils";
+
+registerIconSource();
 
 export type { RouterAdapter };
 

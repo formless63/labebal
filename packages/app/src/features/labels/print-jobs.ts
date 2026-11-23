@@ -32,7 +32,6 @@ import {
 } from "@labebal/core";
 import { reserveCounters, type ReserveItem } from "../counters/api";
 import { isInverted } from "./context";
-import "./icons-client";
 import type { PrintContext, PrintOptions } from "./print";
 
 type Item = { label: Label; qty: number };
