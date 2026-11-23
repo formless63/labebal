@@ -3,20 +3,18 @@ name: Release
 on:
   push:
     tags: ["v*"]
-permissions:
-  contents: write
-  id-token: write
+permissions: {}
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 24
-          cache: pnpm
-          registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
       - name: Versions match the tag
         run: |
@@ -30,13 +28,37 @@ jobs:
         run: gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && gh release upload "$GITHUB_REF_NAME" out/*.tgz --clobber || gh release create "$GITHUB_REF_NAME" out/*.tgz --generate-notes
         env:
           GH_TOKEN: ${{ github.token }}
-      # Trusted publishing (no token stored): set up once per package on npmjs.com.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: out/*.tgz
+          if-no-files-found: error
+          retention-days: 7
+
+  # Trusted publishing: npm accepts this workflow's identity, so no token is stored.
+  # Both packages name this repo and release.yml as their trusted publisher on
+  # npmjs.com. Only this job can ask for that identity, and it runs no project code.
+  npm:
+    needs: release
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+      - uses: actions/download-artifact@v4
+        with:
+          name: packages
+          path: out
       - name: Publish to npm
         run: |
-          npm install -g npm@latest
+          unset NODE_AUTH_TOKEN # setup-node's placeholder, so npm uses the workflow identity
+          npm install -g npm@11
+          v="${GITHUB_REF_NAME#v}"
           for p in core app; do
-            name="@labebal/$p"; v="${GITHUB_REF_NAME#v}"
-            npm view "$name" name >/dev/null 2>&1 || { echo "::warning::$name is not on npm yet: the first publish is manual (npm publish the release .tgz), then add a trusted publisher"; continue; }
+            name="@labebal/$p"
             if npm view "$name@$v" version >/dev/null 2>&1; then echo "$name@$v is already published"; continue; fi
-            npm publish "./out/labebal-$p-$v.tgz" --access public --provenance
+            npm publish "./out/labebal-$p-$v.tgz" --access public
           done
