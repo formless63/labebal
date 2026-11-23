@@ -42,9 +42,9 @@ jobs:
           cache-to: type=gha,scope=${{ matrix.arch }},mode=max
       - name: Smoke test
         run: |
-          docker run -d --name t -p 3000:3000 "$IMAGE@$DIGEST"
+          docker run -d --name smoke -p 3000:3000 "$IMAGE@$DIGEST"
           for i in $(seq 1 30); do curl -fsS http://localhost:3000/api/library -o /dev/null && exit 0; sleep 2; done
-          docker logs t; exit 1
+          docker logs smoke; exit 1
         env:
           DIGEST: ${{ steps.build.outputs.digest }}
       - name: Keep the digest

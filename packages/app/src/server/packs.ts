@@ -64,7 +64,7 @@ const builtinDir = builtinPacksDir;
 /** Folders of the built-in packs: Examples, then Standard formats beside it. */
 const builtinDirs = () => {
   const examples = path.resolve(builtinDir());
-  return [examples, ...["standards", "welcome"].map((d) => path.join(path.dirname(examples), d))];
+  return [examples, ...["standards", "welcome"].map((d) => path.join(/* turbopackIgnore: true */ path.dirname(examples), d))];
 };
 const builtinManifestUrl = () => pathToFileURL(path.join(builtinDir(), PACK_MANIFEST)).href;
 const builtinManifestUrls = () => builtinDirs().map((d) => pathToFileURL(path.join(d, PACK_MANIFEST)).href);

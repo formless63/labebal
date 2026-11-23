@@ -192,7 +192,7 @@ export async function listStoredBackups(): Promise<StoredBackup[]> {
   const { dir } = backupSchedule();
   let names: string[] = [];
   try {
-    names = await readdir(dir);
+    names = await readdir(/* turbopackIgnore: true */ dir);
   } catch {
     return [];
   }
@@ -223,7 +223,7 @@ export async function saveBackupToDisk(reason = "scheduled"): Promise<StoredBack
   const { zip } = await createBackup(reason);
   const name = backupFileName();
   await writeFile(path.join(dir, name), zip);
-  for (const old of backupsToPrune(await readdir(dir), keep)) await unlink(path.join(dir, old)).catch(() => undefined);
+  for (const old of backupsToPrune(await readdir(/* turbopackIgnore: true */ dir), keep)) await unlink(path.join(dir, old)).catch(() => undefined);
   return { name, size: zip.length, createdAt: new Date().toISOString() };
 }
 
