@@ -1,0 +1,167 @@
+{
+  "id": "t-demo-elements",
+  "name": "Demo: icons, codes, images",
+  "description": "Icon / QR / image slot next to a title and a detail line. Labels show one slot each.",
+  "schema": 2,
+  "design": {
+    "w": 40,
+    "h": 12
+  },
+  "scaleText": true,
+  "tags": [
+    "demo"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "Title",
+      "type": "text",
+      "default": "Title"
+    },
+    {
+      "key": "detail",
+      "label": "Detail",
+      "type": "text",
+      "default": "Detail"
+    },
+    {
+      "key": "icon",
+      "label": "Icon (Tabler name)",
+      "type": "text",
+      "default": "tag"
+    },
+    {
+      "key": "code",
+      "label": "Code value",
+      "type": "text",
+      "default": ""
+    },
+    {
+      "key": "image",
+      "label": "Image URL",
+      "type": "text",
+      "default": ""
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      0.6,
+      0.8,
+      0.6,
+      0.8
+    ],
+    "gap": 1.2,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "icon",
+        "name": "Icon",
+        "type": "icon",
+        "icon": "{{icon}}",
+        "color": "black",
+        "w": {
+          "kind": "hug"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      },
+      {
+        "id": "code",
+        "name": "Code",
+        "type": "code",
+        "format": "qrcode",
+        "value": "{{code}}",
+        "ecc": "M",
+        "color": "black",
+        "w": {
+          "kind": "hug"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      },
+      {
+        "id": "image",
+        "name": "Image",
+        "type": "image",
+        "src": "{{image}}",
+        "fit": "contain",
+        "dither": "atkinson",
+        "color": "black",
+        "w": {
+          "kind": "hug"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      },
+      {
+        "id": "texts",
+        "name": "Texts",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.4,
+        "align": "stretch",
+        "justify": "center",
+        "children": [
+          {
+            "id": "title",
+            "name": "Title",
+            "type": "text",
+            "text": "{{title}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 14,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 2
+            }
+          },
+          {
+            "id": "detail",
+            "name": "Detail",
+            "type": "text",
+            "text": "{{detail}}",
+            "font": "Atkinson Hyperlegible Next",
+            "sizePt": 7,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "weight": 600
+          }
+        ]
+      }
+    ]
+  }
+}

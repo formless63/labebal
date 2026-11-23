@@ -1,0 +1,5 @@
+id,name,template,folder,tags,title,spec,category,location,code
+l-drawer-face-48x16-scr-m3-8,M3 × 8 socket head,t-drawer-face-48x16,Examples/Drawers,drawers,M3 × 8 socket head,DIN 912 · A2 stainless,Screws,A1,SCR-M3-8
+l-drawer-face-48x16-nut-m3,M3 hex nut,t-drawer-face-48x16,Examples/Drawers,drawers,M3 hex nut,DIN 934 · A2 stainless,Nuts,A4,NUT-M3
+l-drawer-face-48x16-res-10k,10 kΩ,t-drawer-face-48x16,Examples/Drawers,drawers,10 kΩ,¼ W · 1 % metal film,Resistors,B3,RES-10K
+l-drawer-face-48x16-con-jst-xh2,JST-XH 2-pin,t-drawer-face-48x16,Examples/Drawers,drawers,JST-XH 2-pin,2.54 mm · housing + pins,Connectors,C1,CON-JST-XH2

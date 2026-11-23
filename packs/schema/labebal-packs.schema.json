@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "packs": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "Paths to pack manifests (folder/labebal-pack.json) or bundle files."
+    }
+  },
+  "required": [
+    "name",
+    "packs"
+  ],
+  "description": "labebal pack collection (labebal-packs.json).",
+  "$id": "https://raw.githubusercontent.com/formless63/labebal/main/packs/schema/labebal-packs.schema.json",
+  "title": "labebal pack collection"
+}

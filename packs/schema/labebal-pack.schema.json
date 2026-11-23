@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$",
+      "description": "Stable pack id. Never change it: installs and updates are matched on it."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$",
+      "description": "Semver. Bump it to offer an update."
+    },
+    "description": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "minApp": {
+      "description": "Oldest labebal pack format / app version this pack needs.",
+      "type": "string"
+    },
+    "folder": {
+      "description": "Library folder for labels that don't name their own (`/` nests).",
+      "type": "string"
+    },
+    "templates": {
+      "default": [],
+      "description": "Template JSON files: a Template, an array of them, or a library export ({ templates, labels }).",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "labels": {
+      "default": [],
+      "description": "Label files: .csv (id?, name, template, folder, invert, tags, overrides, then one column per field key) or .json (Label / Label[] / { labels }).",
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "template": {
+                "description": "Template id for rows / labels that don't name one.",
+                "type": "string"
+              },
+              "folder": {
+                "description": "Folder for labels in this file that don't name one.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        ]
+      }
+    },
+    "datasets": {
+      "default": [],
+      "description": "Dataset JSON files (core Dataset: id, name, columns, rows, link).",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "assets": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "string",
+            "minLength": 1
+          },
+          {
+            "type": "object",
+            "properties": {
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "id": {
+                "description": "Asset id templates use (`/api/assets/<id>`, `custom:<id>`). Default: pa-<pack>-<file name>.",
+                "type": "string",
+                "pattern": "^[\\w-]+$"
+              },
+              "kind": {
+                "description": "icon = SVG used as `custom:<id>`; default image.",
+                "type": "string",
+                "enum": [
+                  "image",
+                  "icon"
+                ]
+              },
+              "name": {
+                "type": "string"
+              },
+              "keywords": {
+                "description": "Icons: extra words the icon picker finds this by.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "path"
+            ]
+          }
+        ]
+      }
+    },
+    "fonts": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "family": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Family name templates use in `font`."
+          },
+          "pixel": {
+            "description": "Pixel fonts: font pixels per em and line height (see `pnpm --filter @labebal/core exec tsx scripts/font-grid.ts`).",
+            "type": "object",
+            "properties": {
+              "pxPerEm": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "linePx": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "pxPerEm",
+              "linePx"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^[\\w-]+$"
+          }
+        },
+        "required": [
+          "path",
+          "family"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "version"
+  ],
+  "description": "labebal pack manifest (labebal-pack.json).",
+  "$id": "https://raw.githubusercontent.com/formless63/labebal/main/packs/schema/labebal-pack.schema.json",
+  "title": "labebal pack manifest"
+}

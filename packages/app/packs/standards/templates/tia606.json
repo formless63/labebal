@@ -1,0 +1,115 @@
+{
+  "id": "t-std-tia606",
+  "name": "Cable / port ID (ANSI/TIA-606)",
+  "description": "Identifier for cables, patch panel ports and outlets in the TIA-606 style (space, rack, panel, port: 1A-AJ05-B:24), with the far end underneath. Use the same label at both ends.",
+  "schema": 2,
+  "design": {
+    "w": 40,
+    "h": 12
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "cables",
+    "network"
+  ],
+  "fields": [
+    {
+      "key": "id",
+      "label": "Identifier",
+      "type": "text",
+      "default": "1A-AJ05-B:24",
+      "help": "TIA-606 identifier, e.g. telecom space 1A, rack AJ05, panel B, port 24."
+    },
+    {
+      "key": "farEnd",
+      "label": "Far end",
+      "type": "text",
+      "default": "2B-AA01-A:12",
+      "help": "Where the other end lands. Empty: one line."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "column",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      0.6,
+      1,
+      0.6,
+      1
+    ],
+    "gap": 0.3,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "id",
+        "name": "id",
+        "type": "text",
+        "text": "{{id}}",
+        "font": "JetBrains Mono",
+        "weight": 800,
+        "sizePt": 14,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 2
+        }
+      },
+      {
+        "id": "farEnd",
+        "name": "farEnd",
+        "type": "text",
+        "text": "→ {{farEnd}}",
+        "font": "JetBrains Mono",
+        "weight": 600,
+        "sizePt": 7,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r18",
+        "name": "Hide farEnd when farEnd is empty",
+        "when": {
+          "column": "farEnd",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "farEnd": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

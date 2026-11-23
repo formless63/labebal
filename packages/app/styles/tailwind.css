@@ -1,0 +1,12 @@
+/*
+ * For hosts that build their own Tailwind 4 CSS (the theme follows the host):
+ *
+ *   @import "tailwindcss";
+ *   @import "@labebal/app/tailwind.css";
+ *
+ * labebal's screens use shadcn/ui's colour tokens (bg-background, text-muted-foreground,
+ * border-border, ...). A shadcn host already defines them, so its theme switcher
+ * themes labebal too. A Tailwind host without shadcn also imports
+ * "@labebal/app/theme.css" for default tokens.
+ */
+@source "../src";

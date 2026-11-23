@@ -1,0 +1,149 @@
+{
+  "id": "t-std-asset",
+  "name": "Asset tag",
+  "description": "Equipment / property tag: your company (Team values) on a black band, the asset number in large type and as a Code 128 barcode.",
+  "schema": 2,
+  "design": {
+    "w": 50,
+    "h": 25
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "inventory"
+  ],
+  "fields": [
+    {
+      "key": "asset",
+      "label": "Asset number",
+      "type": "text",
+      "default": "A-000123",
+      "help": "Use a counter for new tags: {{counter:asset:A-000000}}."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "column",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "gap": 0.4,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "band",
+        "name": "band",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1
+        },
+        "padding": [
+          0.6,
+          1.5,
+          0.6,
+          1.5
+        ],
+        "align": "stretch",
+        "fill": "black",
+        "children": [
+          {
+            "id": "company",
+            "name": "company",
+            "type": "text",
+            "text": "Property of {{team:company|default:your company}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 7,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "center",
+            "valign": "middle",
+            "uppercase": true,
+            "letterSpacing": 0.1,
+            "color": "white",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      },
+      {
+        "id": "number",
+        "name": "number",
+        "type": "text",
+        "text": "{{asset}}",
+        "font": "JetBrains Mono",
+        "weight": 800,
+        "sizePt": 14,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.5
+        }
+      },
+      {
+        "id": "barcode",
+        "name": "Barcode",
+        "type": "code",
+        "format": "code128",
+        "value": "{{asset}}",
+        "quietZone": true,
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.8
+        }
+      },
+      {
+        "id": "contact",
+        "name": "contact",
+        "type": "text",
+        "text": "{{team:phone}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 600,
+        "sizePt": 5,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 0.5
+        }
+      }
+    ]
+  }
+}

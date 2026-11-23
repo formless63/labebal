@@ -1,0 +1,19 @@
+{
+  "name": "labebal",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
+    "packs": "pnpm --filter @labebal/core packs"
+  },
+  "packageManager": "pnpm@11.22.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formless63/labebal.git"
+  }
+}

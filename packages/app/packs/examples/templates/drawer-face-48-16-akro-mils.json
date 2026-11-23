@@ -1,0 +1,394 @@
+{
+  "id": "t-drawer-face-48x16",
+  "name": "Drawer face 48 × 16 (Akro-Mils)",
+  "description": "Akro-Mils drawer face (48 x 16 mm): category icon, part name, spec + drawer position, QR. Fits N1 14 x 40 (no QR); M2 50 x 15 is ~2 mm wider than the face.",
+  "schema": 2,
+  "design": {
+    "w": 48,
+    "h": 16
+  },
+  "scaleText": true,
+  "tags": [
+    "drawers"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "Part name",
+      "type": "text",
+      "default": "M3 × 8 socket head"
+    },
+    {
+      "key": "spec",
+      "label": "Spec",
+      "type": "text",
+      "default": "DIN 912 · A2"
+    },
+    {
+      "key": "category",
+      "label": "Category (picks the icon)",
+      "type": "text",
+      "default": "Screws"
+    },
+    {
+      "key": "icon",
+      "label": "Icon (set by rules)",
+      "type": "text",
+      "default": "box"
+    },
+    {
+      "key": "location",
+      "label": "Drawer",
+      "type": "text",
+      "default": "A1"
+    },
+    {
+      "key": "code",
+      "label": "QR code (SKU or URL)",
+      "type": "text",
+      "default": ""
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      0.6,
+      0.6,
+      0.6,
+      0.6
+    ],
+    "gap": 1,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "iconBox",
+        "name": "Icon box",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fixed",
+          "mm": 12
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "padding": [
+          0.8,
+          0.8,
+          0.8,
+          0.8
+        ],
+        "align": "stretch",
+        "justify": "center",
+        "radius": 1.2,
+        "fill": "none",
+        "children": [
+          {
+            "id": "icon",
+            "name": "Icon",
+            "type": "icon",
+            "icon": "{{icon}}",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      },
+      {
+        "id": "text",
+        "name": "Text",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.4,
+        "align": "stretch",
+        "justify": "center",
+        "children": [
+          {
+            "id": "title",
+            "name": "Part name",
+            "type": "text",
+            "text": "{{title}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 12,
+            "minSizePt": 5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "bottom",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 3
+            }
+          },
+          {
+            "id": "bottom",
+            "name": "Spec line",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 2
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "spec",
+                "name": "Spec",
+                "type": "text",
+                "text": "{{spec}}",
+                "font": "Atkinson Hyperlegible Next",
+                "sizePt": 7,
+                "minSizePt": 4,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "top",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                },
+                "weight": 600
+              },
+              {
+                "id": "location",
+                "name": "Drawer",
+                "type": "text",
+                "text": "{{location}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 7,
+                "minSizePt": 4,
+                "fit": "shrink",
+                "align": "right",
+                "valign": "top",
+                "color": "black",
+                "w": {
+                  "kind": "hug"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "qr",
+        "name": "QR code",
+        "type": "code",
+        "format": "qrcode",
+        "value": "{{code}}",
+        "ecc": "M",
+        "color": "black",
+        "w": {
+          "kind": "fixed",
+          "mm": 13.6
+        },
+        "h": {
+          "kind": "fill"
+        }
+      }
+    ]
+  },
+  "variants": [
+    {
+      "id": "short",
+      "name": "Under 13 mm tall: narrower icon box",
+      "when": {
+        "maxH": 13
+      },
+      "patches": {
+        "iconBox": {
+          "w": {
+            "kind": "fixed",
+            "mm": 9.5
+          },
+          "padding": [
+            0.6,
+            0.6,
+            0.6,
+            0.6
+          ]
+        }
+      }
+    },
+    {
+      "id": "no-qr",
+      "name": "Under 44 mm wide: no QR",
+      "when": {
+        "maxW": 43.9
+      },
+      "patches": {
+        "qr": {
+          "hidden": true
+        }
+      }
+    }
+  ],
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "face-screws",
+        "name": "Screws icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "Screws"
+        },
+        "then": {
+          "values": {
+            "icon": "mdi:screw-machine-round-top"
+          }
+        }
+      },
+      {
+        "id": "face-nuts",
+        "name": "Nuts icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "Nuts"
+        },
+        "then": {
+          "values": {
+            "icon": "mdi:nut"
+          }
+        }
+      },
+      {
+        "id": "face-washers",
+        "name": "Washers icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "Washers"
+        },
+        "then": {
+          "values": {
+            "icon": "mdi:circle-double"
+          }
+        }
+      },
+      {
+        "id": "face-resistors",
+        "name": "Resistors icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "Resistors"
+        },
+        "then": {
+          "values": {
+            "icon": "circuit-resistor"
+          }
+        }
+      },
+      {
+        "id": "face-capacitors",
+        "name": "Capacitors icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "Capacitors"
+        },
+        "then": {
+          "values": {
+            "icon": "circuit-capacitor"
+          }
+        }
+      },
+      {
+        "id": "face-leds",
+        "name": "LEDs icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "LEDs"
+        },
+        "then": {
+          "values": {
+            "icon": "bulb"
+          }
+        }
+      },
+      {
+        "id": "face-connectors",
+        "name": "Connectors icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "Connectors"
+        },
+        "then": {
+          "values": {
+            "icon": "plug-connected"
+          }
+        }
+      },
+      {
+        "id": "face-ics",
+        "name": "ICs icon",
+        "when": {
+          "column": "category",
+          "op": "equals",
+          "value": "ICs"
+        },
+        "then": {
+          "values": {
+            "icon": "mdi:integrated-circuit-chip"
+          }
+        }
+      },
+      {
+        "id": "face-electronics",
+        "name": "Electronics: white icon on black",
+        "when": {
+          "column": "category",
+          "op": "regex",
+          "value": "^(resistors|capacitors|leds|ics)$"
+        },
+        "then": {
+          "overrides": {
+            "iconBox": {
+              "fill": "black"
+            },
+            "icon": {
+              "color": "white"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

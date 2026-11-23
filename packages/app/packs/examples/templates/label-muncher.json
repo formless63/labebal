@@ -1,0 +1,604 @@
+{
+  "id": "t-muncher",
+  "name": "Label Muncher",
+  "description": "A small monster with your words in its mouth.",
+  "schema": 2,
+  "design": {
+    "w": 30,
+    "h": 12
+  },
+  "scaleText": true,
+  "tags": [
+    "fun"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "What it's eating",
+      "type": "text",
+      "default": "SNACKS"
+    },
+    {
+      "key": "detail",
+      "label": "On its tongue",
+      "type": "text",
+      "default": "DO NOT FEED"
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Monster",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "align": "stretch",
+    "children": [
+      {
+        "id": "face",
+        "name": "Face",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill",
+          "weight": 1
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "align": "stretch",
+        "children": [
+          {
+            "id": "eyes",
+            "name": "Eyes",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "align": "stretch",
+            "children": [
+              {
+                "id": "eyeL",
+                "name": "Eye",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "eyeLWhite",
+                    "name": "White",
+                    "type": "ellipse",
+                    "x": 0,
+                    "y": 0,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "ax": "stretch",
+                    "ay": "stretch",
+                    "fill": "white"
+                  },
+                  {
+                    "id": "eyeLPupil",
+                    "name": "Pupil",
+                    "type": "ellipse",
+                    "x": 1.3,
+                    "y": 1.5,
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 1.3
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 1.6
+                    },
+                    "ax": "scale",
+                    "ay": "scale",
+                    "fill": "black"
+                  }
+                ]
+              },
+              {
+                "id": "eyeR",
+                "name": "Eye",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "eyeRWhite",
+                    "name": "White",
+                    "type": "ellipse",
+                    "x": 0,
+                    "y": 0,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "ax": "stretch",
+                    "ay": "stretch",
+                    "fill": "white"
+                  },
+                  {
+                    "id": "eyeRPupil",
+                    "name": "Pupil",
+                    "type": "ellipse",
+                    "x": 0.9,
+                    "y": 0.9,
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 1.3
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 1.6
+                    },
+                    "ax": "scale",
+                    "ay": "scale",
+                    "fill": "black"
+                  }
+                ]
+              }
+            ],
+            "gap": 0.5
+          },
+          {
+            "id": "noise",
+            "name": "Noise",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "hug"
+            },
+            "align": "stretch",
+            "children": [
+              {
+                "id": "big",
+                "name": "NOM",
+                "type": "text",
+                "text": "NOM",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5.4,
+                "fit": "shrink",
+                "align": "center",
+                "valign": "middle",
+                "color": "white",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "hug"
+                }
+              },
+              {
+                "id": "small",
+                "name": "NOM NOM",
+                "type": "text",
+                "text": "NOM NOM",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 3.6,
+                "fit": "shrink",
+                "align": "center",
+                "valign": "middle",
+                "color": "white",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "hug"
+                }
+              }
+            ],
+            "lockup": true,
+            "gap": 0.3
+          }
+        ],
+        "gap": 0.5,
+        "padding": [
+          0.4,
+          0.3,
+          0.3,
+          0.3
+        ]
+      },
+      {
+        "id": "mouth",
+        "name": "Mouth",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill",
+          "weight": 2.6
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "align": "stretch",
+        "children": [
+          {
+            "id": "top",
+            "name": "Top teeth",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 1
+            },
+            "align": "stretch",
+            "children": [
+              {
+                "id": "top1",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "top2",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "top3",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "top4",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "top5",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "top6",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "top7",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 180,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "title",
+            "name": "Title",
+            "type": "text",
+            "text": "{{title}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 9,
+            "fit": "fill",
+            "align": "center",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 2.6
+            }
+          },
+          {
+            "id": "tongue",
+            "name": "Tongue",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 1.5
+            },
+            "align": "stretch",
+            "children": [
+              {
+                "id": "detail",
+                "name": "Detail",
+                "type": "text",
+                "text": "{{detail}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "fit": "fill",
+                "align": "center",
+                "valign": "middle",
+                "color": "white",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ],
+            "fill": "black",
+            "radius": 1,
+            "padding": [
+              0.1,
+              0.8,
+              0.1,
+              0.8
+            ]
+          },
+          {
+            "id": "bottom",
+            "name": "Bottom teeth",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 1
+            },
+            "align": "stretch",
+            "children": [
+              {
+                "id": "bottom1",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bottom2",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bottom3",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bottom4",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bottom5",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bottom6",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bottom7",
+                "name": "Tooth gap",
+                "type": "polygon",
+                "sides": 3,
+                "angle": 0,
+                "fill": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          }
+        ],
+        "gap": 0.4,
+        "padding": [
+          0,
+          0.4,
+          0,
+          0.4
+        ],
+        "fill": "white",
+        "radius": 1
+      }
+    ],
+    "padding": [
+      0.8,
+      0.9,
+      0.8,
+      0.9
+    ],
+    "gap": 0.8,
+    "fill": "black",
+    "radius": 2
+  },
+  "variants": [
+    {
+      "id": "narrow",
+      "name": "Short labels: no noise",
+      "when": {
+        "maxW": 22
+      },
+      "patches": {
+        "noise": {
+          "hidden": true
+        }
+      }
+    },
+    {
+      "id": "tall",
+      "name": "Square and tall labels: face on top",
+      "when": {
+        "maxAspect": 1.2
+      },
+      "patches": {
+        "root": {
+          "layout": "column"
+        },
+        "face": {
+          "w": {
+            "kind": "fill"
+          },
+          "h": {
+            "kind": "fill",
+            "weight": 1
+          }
+        },
+        "mouth": {
+          "w": {
+            "kind": "fill"
+          },
+          "h": {
+            "kind": "fill",
+            "weight": 1.6
+          }
+        }
+      }
+    }
+  ]
+}

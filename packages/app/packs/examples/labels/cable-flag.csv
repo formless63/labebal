@@ -1,0 +1,3 @@
+id,name,template,folder,tags,title,detail
+l-cable-flag-hdmi,Cable: HDMI 1 (TV),t-cable-flag,Examples/Cables,cable,HDMI 1,TV → AV receiver
+l-cable-flag-psu,Cable: Pi 5 power,t-cable-flag,Examples/Cables,cable,PSU,Raspberry Pi 5

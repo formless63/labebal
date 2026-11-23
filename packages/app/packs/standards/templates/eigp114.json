@@ -1,0 +1,617 @@
+{
+  "id": "t-std-eigp114",
+  "name": "Component reel / bag (ECIA EIGP 114)",
+  "description": "Electronic component packaging label: readable part numbers, quantity, date code, lot and country of origin, and the ECIA 2D symbol (Data Matrix, ANSI MH10.8.2 format 06 with data identifiers P, 1P, K, Q, 10D, 1T, 4L). 4 x 2 in.",
+  "schema": 2,
+  "design": {
+    "w": 101.6,
+    "h": 50.8
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "electronics",
+    "parts"
+  ],
+  "fields": [
+    {
+      "key": "custPart",
+      "label": "Customer part number (P)",
+      "type": "text",
+      "default": "R-10K-0603"
+    },
+    {
+      "key": "mfrPart",
+      "label": "Manufacturer part number (1P)",
+      "type": "text",
+      "default": "RC0603FR-0710KL"
+    },
+    {
+      "key": "po",
+      "label": "PO number (K)",
+      "type": "text",
+      "default": "PO-1042"
+    },
+    {
+      "key": "qty",
+      "label": "Quantity (Q)",
+      "type": "text",
+      "default": "5000"
+    },
+    {
+      "key": "dateCode",
+      "label": "Date code (10D, YYWW)",
+      "type": "text",
+      "default": "2647"
+    },
+    {
+      "key": "lot",
+      "label": "Lot (1T)",
+      "type": "text",
+      "default": "LOT42"
+    },
+    {
+      "key": "coo",
+      "label": "Country of origin (4L)",
+      "type": "text",
+      "default": "TW",
+      "help": "Two-letter country code."
+    },
+    {
+      "key": "description",
+      "label": "Description",
+      "type": "text",
+      "default": "Resistor 10 kΩ 1% 0603"
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      2,
+      2.5,
+      2,
+      2.5
+    ],
+    "gap": 2,
+    "align": "stretch",
+    "stroke": "black",
+    "strokeMm": 0.4,
+    "children": [
+      {
+        "id": "readable",
+        "name": "readable",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill",
+          "weight": 2.2
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.2,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "desc",
+            "name": "desc",
+            "type": "text",
+            "text": "{{description}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 9,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 1.3
+            }
+          },
+          {
+            "id": "rCust",
+            "name": "rCust",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rCustCap",
+                "name": "rCustCap",
+                "type": "text",
+                "text": "Cust P/N (P)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rCustVal",
+                "name": "rCustVal",
+                "type": "text",
+                "text": "{{custPart}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rMfr",
+            "name": "rMfr",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rMfrCap",
+                "name": "rMfrCap",
+                "type": "text",
+                "text": "Mfr P/N (1P)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rMfrVal",
+                "name": "rMfrVal",
+                "type": "text",
+                "text": "{{mfrPart}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rPo",
+            "name": "rPo",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rPoCap",
+                "name": "rPoCap",
+                "type": "text",
+                "text": "PO (K)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rPoVal",
+                "name": "rPoVal",
+                "type": "text",
+                "text": "{{po}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rQty",
+            "name": "rQty",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rQtyCap",
+                "name": "rQtyCap",
+                "type": "text",
+                "text": "Qty (Q)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rQtyVal",
+                "name": "rQtyVal",
+                "type": "text",
+                "text": "{{qty}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rDate",
+            "name": "rDate",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rDateCap",
+                "name": "rDateCap",
+                "type": "text",
+                "text": "Date code (10D)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rDateVal",
+                "name": "rDateVal",
+                "type": "text",
+                "text": "{{dateCode}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rLot",
+            "name": "rLot",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rLotCap",
+                "name": "rLotCap",
+                "type": "text",
+                "text": "Lot (1T)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rLotVal",
+                "name": "rLotVal",
+                "type": "text",
+                "text": "{{lot}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rCoo",
+            "name": "rCoo",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rCooCap",
+                "name": "rCooCap",
+                "type": "text",
+                "text": "Origin (4L)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 34
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rCooVal",
+                "name": "rCooVal",
+                "type": "text",
+                "text": "{{coo}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 8,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "symbol",
+        "name": "symbol",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill",
+          "weight": 1
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.5,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "dm",
+            "name": "ECIA 2D symbol",
+            "type": "code",
+            "format": "datamatrix",
+            "value": "[)>\u001e06\u001dP{{custPart}}\u001d1P{{mfrPart}}\u001dK{{po}}\u001dQ{{qty}}\u001d10D{{dateCode}}\u001d1T{{lot}}\u001d4L{{coo}}\u001e\u0004",
+            "quietZone": true,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "mfr",
+            "name": "mfr",
+            "type": "text",
+            "text": "{{team:company}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 5,
+            "minSizePt": 3,
+            "fit": "shrink",
+            "align": "center",
+            "valign": "middle",
+            "uppercase": true,
+            "letterSpacing": 0.15,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 0.15
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r19",
+        "name": "Hide rPo when po is empty",
+        "when": {
+          "column": "po",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "rPo": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

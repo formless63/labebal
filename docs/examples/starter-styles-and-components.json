@@ -1,0 +1,739 @@
+{
+  "templates": [],
+  "labels": [],
+  "styles": [
+    {
+      "id": "ts-heading",
+      "name": "Heading",
+      "description": "Bold title that shrinks to fit.",
+      "font": "Arial",
+      "weight": 700,
+      "sizePt": 12,
+      "minSizePt": 5,
+      "fit": "shrink",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "ts-subtitle",
+      "name": "Subtitle",
+      "description": "Second line under a heading.",
+      "font": "Arial",
+      "sizePt": 7,
+      "minSizePt": 4,
+      "fit": "shrink",
+      "align": "left",
+      "valign": "top"
+    },
+    {
+      "id": "ts-caption",
+      "name": "Caption",
+      "description": "Small spaced-out capitals for field names and fine print.",
+      "font": "Arial",
+      "weight": 700,
+      "sizePt": 5,
+      "minSizePt": 3.5,
+      "fit": "shrink",
+      "uppercase": true,
+      "letterSpacing": 0.25,
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "ts-centered",
+      "name": "Centered title",
+      "description": "Bold, centred both ways, shrinks to fit: badges and single-word labels.",
+      "font": "Arial",
+      "weight": 700,
+      "sizePt": 14,
+      "minSizePt": 5,
+      "fit": "shrink",
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "ts-part-number",
+      "name": "Part number",
+      "description": "Monospaced, for SKUs, values and codes people read.",
+      "font": "Courier New",
+      "weight": 700,
+      "sizePt": 9,
+      "minSizePt": 4,
+      "fit": "shrink",
+      "align": "left",
+      "valign": "middle"
+    },
+    {
+      "id": "ts-warning",
+      "name": "Warning",
+      "description": "Condensed capitals for warnings.",
+      "font": "Impact",
+      "sizePt": 10,
+      "minSizePt": 5,
+      "fit": "shrink",
+      "uppercase": true,
+      "letterSpacing": 0.2,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "ts-condensed-title",
+      "name": "Condensed title",
+      "description": "Heavy condensed title: solid at small sizes on 203 dpi printers.",
+      "font": "Roboto Condensed",
+      "weight": 800,
+      "sizePt": 12,
+      "minSizePt": 6,
+      "fit": "shrink",
+      "uppercase": true,
+      "align": "center",
+      "valign": "middle"
+    },
+    {
+      "id": "ts-mono-tag",
+      "name": "Mono tag",
+      "description": "Heavy monospace for short tags and badges.",
+      "font": "JetBrains Mono",
+      "weight": 800,
+      "sizePt": 8,
+      "minSizePt": 6,
+      "fit": "shrink",
+      "uppercase": true,
+      "align": "center",
+      "valign": "middle"
+    }
+  ],
+  "components": [
+    {
+      "id": "comp-icon-title",
+      "name": "Icon + title",
+      "description": "Category icon beside a heading and subtitle. Change the icon and texts per instance.",
+      "design": {
+        "w": 40,
+        "h": 12
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "Icon + title",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 1.2,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "icon",
+            "name": "Icon",
+            "type": "icon",
+            "icon": "box",
+            "color": "black",
+            "w": {
+              "kind": "fixed",
+              "mm": 10
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "texts",
+            "name": "Texts",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 0.3,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "title",
+                "name": "Title",
+                "type": "text",
+                "text": "Part name",
+                "style": "ts-heading",
+                "font": "Arial",
+                "weight": 700,
+                "sizePt": 12,
+                "minSizePt": 5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "bottom",
+                "styleOverrides": [
+                  "valign"
+                ],
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 3
+                }
+              },
+              {
+                "id": "subtitle",
+                "name": "Subtitle",
+                "type": "text",
+                "text": "Spec or size",
+                "style": "ts-subtitle",
+                "font": "Arial",
+                "sizePt": 7,
+                "minSizePt": 4,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "top",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-warning-strip",
+      "name": "Warning strip",
+      "description": "Solid black strip with a warning sign and white capitals (knocked out).",
+      "design": {
+        "w": 40,
+        "h": 7
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "Warning strip",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "padding": [
+          0.8,
+          1.2,
+          0.8,
+          1.2
+        ],
+        "gap": 1,
+        "align": "stretch",
+        "justify": "center",
+        "fill": "black",
+        "radius": 0.8,
+        "children": [
+          {
+            "id": "icon",
+            "name": "Sign",
+            "type": "icon",
+            "icon": "alert-triangle",
+            "color": "white",
+            "w": {
+              "kind": "fixed",
+              "mm": 5
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "text",
+            "name": "Text",
+            "type": "text",
+            "text": "Caution",
+            "style": "ts-warning",
+            "font": "Impact",
+            "sizePt": 10,
+            "minSizePt": 5,
+            "fit": "shrink",
+            "uppercase": true,
+            "letterSpacing": 0.2,
+            "align": "center",
+            "valign": "middle",
+            "color": "white",
+            "w": {
+              "kind": "hug"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-qr-id",
+      "name": "QR + ID",
+      "description": "QR code with a caption and the readable ID next to it (inventory, assets).",
+      "design": {
+        "w": 34,
+        "h": 12
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "QR + ID",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 1.2,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "qr",
+            "name": "QR code",
+            "type": "code",
+            "format": "qrcode",
+            "value": "INV-00042",
+            "ecc": "M",
+            "color": "black",
+            "w": {
+              "kind": "hug"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "texts",
+            "name": "Texts",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "align": "stretch",
+            "justify": "center",
+            "children": [
+              {
+                "id": "caption",
+                "name": "Caption",
+                "type": "text",
+                "text": "Asset",
+                "style": "ts-caption",
+                "font": "Arial",
+                "weight": 700,
+                "sizePt": 5,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "uppercase": true,
+                "letterSpacing": 0.25,
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              },
+              {
+                "id": "id",
+                "name": "ID",
+                "type": "text",
+                "text": "INV-00042",
+                "style": "ts-part-number",
+                "font": "Courier New",
+                "weight": 700,
+                "sizePt": 9,
+                "minSizePt": 4,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-barcode-number",
+      "name": "Barcode + number",
+      "description": "Code 128 barcode with the number printed under it.",
+      "design": {
+        "w": 40,
+        "h": 14
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "Barcode + number",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.4,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "barcode",
+            "name": "Barcode",
+            "type": "code",
+            "format": "code128",
+            "value": "SKU-1042",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 3
+            }
+          },
+          {
+            "id": "number",
+            "name": "Number",
+            "type": "text",
+            "text": "SKU-1042",
+            "style": "ts-part-number",
+            "font": "Courier New",
+            "weight": 700,
+            "sizePt": 9,
+            "minSizePt": 4,
+            "fit": "shrink",
+            "align": "center",
+            "valign": "middle",
+            "styleOverrides": [
+              "align"
+            ],
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 1
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-location-badge",
+      "name": "Location badge",
+      "description": "Rounded outline with a short code: drawer, shelf or bin position.",
+      "design": {
+        "w": 10,
+        "h": 8
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "Location badge",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "padding": [
+          0.6,
+          0.8,
+          0.6,
+          0.8
+        ],
+        "align": "stretch",
+        "stroke": "black",
+        "strokeMm": 0.35,
+        "radius": 1.5,
+        "children": [
+          {
+            "id": "code",
+            "name": "Location",
+            "type": "text",
+            "text": "A1",
+            "style": "ts-centered",
+            "font": "Arial",
+            "weight": 700,
+            "sizePt": 14,
+            "minSizePt": 5,
+            "fit": "shrink",
+            "align": "center",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-mono-badge",
+      "name": "Mono badge",
+      "description": "Inverted badge (white text on black).",
+      "design": {
+        "w": 18,
+        "h": 5
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "Mono badge",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "padding": [
+          0.4,
+          0.8,
+          0.4,
+          0.8
+        ],
+        "align": "stretch",
+        "fill": "black",
+        "children": [
+          {
+            "id": "text",
+            "name": "Text",
+            "type": "text",
+            "text": "SNACKS",
+            "style": "ts-mono-tag",
+            "font": "JetBrains Mono",
+            "weight": 800,
+            "sizePt": 8,
+            "minSizePt": 6,
+            "fit": "shrink",
+            "uppercase": true,
+            "align": "center",
+            "valign": "middle",
+            "color": "white",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "comp-date-batch",
+      "name": "Date + batch",
+      "description": "Two small fields side by side for packed / best-before dates or batch numbers.",
+      "design": {
+        "w": 36,
+        "h": 8
+      },
+      "tags": [
+        "examples"
+      ],
+      "root": {
+        "id": "root",
+        "name": "Date + batch",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 1,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "dateBox",
+            "name": "Date",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.4,
+              0.8,
+              0.4,
+              0.8
+            ],
+            "align": "stretch",
+            "stroke": "black",
+            "strokeMm": 0.25,
+            "radius": 0.8,
+            "children": [
+              {
+                "id": "dateCaption",
+                "name": "Date caption",
+                "type": "text",
+                "text": "Packed",
+                "style": "ts-caption",
+                "font": "Arial",
+                "weight": 700,
+                "sizePt": 5,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "uppercase": true,
+                "letterSpacing": 0.25,
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              },
+              {
+                "id": "date",
+                "name": "Date",
+                "type": "text",
+                "text": "2026-11-21",
+                "style": "ts-part-number",
+                "font": "Courier New",
+                "weight": 700,
+                "sizePt": 9,
+                "minSizePt": 4,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 3
+                }
+              }
+            ]
+          },
+          {
+            "id": "batchBox",
+            "name": "Batch",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.4,
+              0.8,
+              0.4,
+              0.8
+            ],
+            "align": "stretch",
+            "stroke": "black",
+            "strokeMm": 0.25,
+            "radius": 0.8,
+            "children": [
+              {
+                "id": "batchCaption",
+                "name": "Batch caption",
+                "type": "text",
+                "text": "Batch",
+                "style": "ts-caption",
+                "font": "Arial",
+                "weight": 700,
+                "sizePt": 5,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "uppercase": true,
+                "letterSpacing": 0.25,
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              },
+              {
+                "id": "batch",
+                "name": "Batch",
+                "type": "text",
+                "text": "B-117",
+                "style": "ts-part-number",
+                "font": "Courier New",
+                "weight": 700,
+                "sizePt": 9,
+                "minSizePt": 4,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 3
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+# Override for a host behind Pangolin: fixed container name, joined to
+# the external `pangolin` network, no host port (Pangolin reaches labebal:3000).
+#
+#   docker compose -f compose.yaml -f compose.pangolin.yaml up -d --build
+#
+# or put COMPOSE_FILE=compose.yaml:compose.pangolin.yaml in .env next to this file
+# and just run `docker compose up -d --build`.
+services:
+  labebal:
+    container_name: labebal
+    ports: !reset []
+    # Host-specific settings (sign-in roles, public URL...), kept out of git.
+    # See docs/DEPLOY.md "Users and roles".
+    env_file:
+      - path: ./labebal.env
+        required: false
+    networks:
+      - pangolin
+
+networks:
+  pangolin:
+    external: true

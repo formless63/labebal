@@ -1,0 +1,809 @@
+{
+  "id": "t-std-gs1-logistic",
+  "name": "GS1 logistic label (SSCC)",
+  "description": "Pallet / carton shipping label after the GS1 Logistic Label guideline: from and to, SSCC, content GTIN, count, batch and best-before, with GS1-128 barcodes. 4 x 6 in. Sender comes from Team values (company, address).",
+  "schema": 2,
+  "design": {
+    "w": 101.6,
+    "h": 152.4
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "shipping",
+    "gs1"
+  ],
+  "fields": [
+    {
+      "key": "to",
+      "label": "Ship to",
+      "type": "multiline",
+      "default": "Customer name\n1 Delivery Road\nTown, ST 12345"
+    },
+    {
+      "key": "sscc",
+      "label": "SSCC (17 digits)",
+      "type": "text",
+      "default": "00012345600000001",
+      "help": "Extension digit, GS1 company prefix and serial; the check digit is added. Use a counter: {{counter:sscc:00012345600000000}}."
+    },
+    {
+      "key": "gtin",
+      "label": "Content GTIN (13 digits)",
+      "type": "text",
+      "default": "0952123454321",
+      "help": "The trade item inside; the check digit is added."
+    },
+    {
+      "key": "count",
+      "label": "Count",
+      "type": "text",
+      "default": "24"
+    },
+    {
+      "key": "batch",
+      "label": "Batch / lot",
+      "type": "text",
+      "default": "LOT42"
+    },
+    {
+      "key": "bestBefore",
+      "label": "Best before",
+      "type": "text",
+      "default": "2027-06-30",
+      "help": "A date (any format); printed as YYMMDD in the barcode."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "column",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      1.5,
+      1.5,
+      1.5,
+      1.5
+    ],
+    "align": "stretch",
+    "stroke": "black",
+    "strokeMm": 0.5,
+    "children": [
+      {
+        "id": "addresses",
+        "name": "addresses",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 3
+        },
+        "align": "stretch",
+        "children": [
+          {
+            "id": "from",
+            "name": "from",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              1.2,
+              1.5,
+              1.2,
+              1.5
+            ],
+            "gap": 0.5,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "fromCap",
+                "name": "fromCap",
+                "type": "text",
+                "text": "From",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "fromText",
+                "name": "Sender (team values)",
+                "type": "text",
+                "text": "{{team:company|default:Your company}}\n{{team:address}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 600,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "top",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 4
+                }
+              }
+            ]
+          },
+          {
+            "id": "addrSplit",
+            "name": "addrSplit",
+            "type": "line",
+            "direction": "vertical",
+            "color": "black",
+            "strokeMm": 0.4,
+            "w": {
+              "kind": "fixed",
+              "mm": 0.4
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "toBox",
+            "name": "toBox",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill",
+              "weight": 1.3
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              1.2,
+              1.5,
+              1.2,
+              1.5
+            ],
+            "gap": 0.5,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "toCap",
+                "name": "toCap",
+                "type": "text",
+                "text": "To",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "toText",
+                "name": "toText",
+                "type": "text",
+                "text": "{{to}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 11,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "top",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 4
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l1",
+        "name": "l1",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "ssccBox",
+        "name": "ssccBox",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.6
+        },
+        "padding": [
+          1,
+          1.5,
+          1,
+          1.5
+        ],
+        "align": "stretch",
+        "children": [
+          {
+            "id": "ssccCap",
+            "name": "ssccCap",
+            "type": "text",
+            "text": "SSCC",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 5,
+            "minSizePt": 3,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "uppercase": true,
+            "letterSpacing": 0.15,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "ssccVal",
+            "name": "ssccVal",
+            "type": "text",
+            "text": "{{sscc|gs1}}",
+            "font": "JetBrains Mono",
+            "weight": 800,
+            "sizePt": 16,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "l2",
+        "name": "l2",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "details1",
+        "name": "details1",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.4
+        },
+        "align": "stretch",
+        "children": [
+          {
+            "id": "content",
+            "name": "content",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill",
+              "weight": 1.6
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.6,
+              1,
+              0.6,
+              1
+            ],
+            "gap": 0.2,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "contentCap",
+                "name": "contentCap",
+                "type": "text",
+                "text": "Content (GTIN)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "contentVal",
+                "name": "contentVal",
+                "type": "text",
+                "text": "{{gtin|gs1}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 10,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              }
+            ]
+          },
+          {
+            "id": "d1Split",
+            "name": "d1Split",
+            "type": "line",
+            "direction": "vertical",
+            "color": "black",
+            "strokeMm": 0.4,
+            "w": {
+              "kind": "fixed",
+              "mm": 0.4
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "countBox",
+            "name": "countBox",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.6,
+              1,
+              0.6,
+              1
+            ],
+            "gap": 0.2,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "countBoxCap",
+                "name": "countBoxCap",
+                "type": "text",
+                "text": "Count",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "countBoxVal",
+                "name": "countBoxVal",
+                "type": "text",
+                "text": "{{count}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 10,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l3",
+        "name": "l3",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "details2",
+        "name": "details2",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.4
+        },
+        "align": "stretch",
+        "children": [
+          {
+            "id": "batchBox",
+            "name": "batchBox",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill",
+              "weight": 1.6
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.6,
+              1,
+              0.6,
+              1
+            ],
+            "gap": 0.2,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "batchBoxCap",
+                "name": "batchBoxCap",
+                "type": "text",
+                "text": "Batch / lot",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "batchBoxVal",
+                "name": "batchBoxVal",
+                "type": "text",
+                "text": "{{batch}}",
+                "font": "JetBrains Mono",
+                "weight": 800,
+                "sizePt": 10,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              }
+            ]
+          },
+          {
+            "id": "d2Split",
+            "name": "d2Split",
+            "type": "line",
+            "direction": "vertical",
+            "color": "black",
+            "strokeMm": 0.4,
+            "w": {
+              "kind": "fixed",
+              "mm": 0.4
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "bbBox",
+            "name": "bbBox",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.6,
+              1,
+              0.6,
+              1
+            ],
+            "gap": 0.2,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "bbBoxCap",
+                "name": "bbBoxCap",
+                "type": "text",
+                "text": "Best before (dd.mm.yy)",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 5,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "bbBoxVal",
+                "name": "bbBoxVal",
+                "type": "text",
+                "text": "{{bestBefore|date:DD.MM.YY}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 10,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l4",
+        "name": "l4",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "barcodes",
+        "name": "barcodes",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 7
+        },
+        "padding": [
+          1.5,
+          3,
+          1.5,
+          3
+        ],
+        "gap": 2,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "bc1",
+            "name": "Content + count",
+            "type": "code",
+            "format": "gs1_128",
+            "value": "(02){{gtin|gs1}}(37){{count}}",
+            "showText": true,
+            "quietZone": true,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "bc2",
+            "name": "Best before + batch",
+            "type": "code",
+            "format": "gs1_128",
+            "value": "(15){{bestBefore|date:YYMMDD}}(10){{batch}}",
+            "showText": true,
+            "quietZone": true,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "bc3",
+            "name": "SSCC",
+            "type": "code",
+            "format": "gs1_128",
+            "value": "(00){{sscc|gs1}}",
+            "showText": true,
+            "quietZone": true,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r1",
+        "name": "No batch: best-before only",
+        "when": {
+          "column": "batch",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "bc2": {
+              "value": "(15){{bestBefore|date:YYMMDD}}"
+            },
+            "batchBox": {
+              "hidden": true
+            },
+            "d2Split": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r2",
+        "name": "No best-before: batch only",
+        "when": {
+          "column": "bestBefore",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "bc2": {
+              "value": "(10){{batch}}"
+            },
+            "bbBox": {
+              "hidden": true
+            },
+            "d2Split": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

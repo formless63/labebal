@@ -1,0 +1,67 @@
+{
+  "transport": "-Com COM3",
+  "connection": {
+    "deviceName": "COM3 serial",
+    "result": 2
+  },
+  "model": {
+    "model": "N1",
+    "id": [
+      3586
+    ],
+    "dpi": 203,
+    "printDirection": "left",
+    "printheadPixels": 96,
+    "paperTypes": [
+      1,
+      11,
+      5,
+      10,
+      3
+    ],
+    "densityMin": 1,
+    "densityMax": 3,
+    "densityDefault": 2
+  },
+  "printTask": "B1",
+  "printerInfo": {
+    "settings": {
+      "connectionSound": true,
+      "powerSound": false,
+      "autoShutdownTime": 3
+    },
+    "connectResult": 2,
+    "protocolVersion": 1,
+    "supportColor": false,
+    "modelId": 3586,
+    "serial": "T000000002",
+    "mac": "00:00:00:00:00:02",
+    "batteryPercents": 100,
+    "hardwareVersion": "4.01/10.25",
+    "softwareVersion": "4.08/10.32"
+  },
+  "rfid": {
+    "labelRfidInfo": {
+      "tagPresent": true,
+      "uuid": "0000000000000000",
+      "barCode": "08062224",
+      "serialNumber": "R000000000000001",
+      "allPaper": 228,
+      "usedPaper": 5,
+      "consumablesType": 1
+    },
+    "ribbonRfidInfo": {
+      "tagPresent": true,
+      "uuid": "0000000000000000",
+      "barCode": "6977388397043",
+      "serialNumber": "R000000000000002",
+      "allPaper": 1600,
+      "usedPaper": 83,
+      "consumablesType": 6
+    }
+  },
+  "heartbeat": {
+    "lidClosed": false,
+    "batteryPercents": 100
+  }
+}

@@ -1,0 +1,17 @@
+id,name,template,folder,tags,overrides,title,spec,icon,code
+l-drawer-bin-scr-m3-8,M3 × 8 socket head,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M3 × 8 socket head,DIN 912 · A2 stainless,mdi:screw-machine-round-top,SCR-M3-8
+l-drawer-bin-scr-m3-12,M3 × 12 socket head,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M3 × 12 socket head,DIN 912 · A2 stainless,mdi:screw-machine-round-top,SCR-M3-12
+l-drawer-bin-scr-m4-10,M4 × 10 button head,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M4 × 10 button head,ISO 7380 · black oxide,mdi:screw-machine-round-top,SCR-M4-10
+l-drawer-bin-nut-m3,M3 hex nut,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M3 hex nut,DIN 934 · A2 stainless,mdi:nut,NUT-M3
+l-drawer-bin-nut-m3-nyl,M3 nylon lock nut,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M3 nylon lock nut,DIN 985 · zinc,mdi:nut,NUT-M3-NYL
+l-drawer-bin-nut-m4,M4 hex nut,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M4 hex nut,DIN 934 · A2 stainless,mdi:nut,NUT-M4
+l-drawer-bin-wsh-m3,M3 flat washer,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,M3 flat washer,DIN 125 · A2 stainless,mdi:circle-double,WSH-M3
+l-drawer-bin-res-220r,220 Ω,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}",220 Ω,¼ W · 1 % metal film,circuit-resistor,RES-220R
+l-drawer-bin-res-1k,1 kΩ,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}",1 kΩ,¼ W · 1 % metal film,circuit-resistor,RES-1K
+l-drawer-bin-res-10k,10 kΩ,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}",10 kΩ,¼ W · 1 % metal film,circuit-resistor,RES-10K
+l-drawer-bin-cap-100n,100 nF,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}",100 nF,50 V ceramic · 2.54 mm,circuit-capacitor,CAP-100N
+l-drawer-bin-cap-10u,10 µF,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}",10 µF,25 V electrolytic,circuit-capacitor,CAP-10U
+l-drawer-bin-led-5-red,"5 mm LED, red",t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}","5 mm LED, red",2 V · 20 mA,bulb,LED-5-RED
+l-drawer-bin-con-jst-xh2,JST-XH 2-pin,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,JST-XH 2-pin,2.54 mm · housing + pins,plug-connected,CON-JST-XH2
+l-drawer-bin-con-dupont-f,Dupont female,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,,Dupont female,2.54 mm crimp terminals,plug-connected,CON-DUPONT-F
+l-drawer-bin-ic-ne555,NE555 timer,t-drawer-bin,Examples/Drawers,dataset:ds-drawer-akro,"{""iconBox"":{""fill"":""black""},""icon"":{""color"":""white""}}",NE555 timer,DIP-8,mdi:integrated-circuit-chip,IC-NE555

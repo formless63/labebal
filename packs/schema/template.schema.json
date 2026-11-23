@@ -1,0 +1,268 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "schema": {
+          "type": "number",
+          "const": 2
+        },
+        "design": {
+          "type": "object",
+          "properties": {
+            "w": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "h": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "w",
+            "h"
+          ]
+        },
+        "root": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "type": {
+              "type": "string",
+              "const": "frame"
+            }
+          },
+          "required": [
+            "id",
+            "type"
+          ],
+          "additionalProperties": {}
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "key": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "key",
+              "label"
+            ],
+            "additionalProperties": {}
+          }
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "schema",
+        "design",
+        "root",
+        "fields"
+      ],
+      "additionalProperties": {}
+    },
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema": {
+            "type": "number",
+            "const": 2
+          },
+          "design": {
+            "type": "object",
+            "properties": {
+              "w": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "h": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "w",
+              "h"
+            ]
+          },
+          "root": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "type": {
+                "type": "string",
+                "const": "frame"
+              }
+            },
+            "required": [
+              "id",
+              "type"
+            ],
+            "additionalProperties": {}
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "key",
+                "label"
+              ],
+              "additionalProperties": {}
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "schema",
+          "design",
+          "root",
+          "fields"
+        ],
+        "additionalProperties": {}
+      }
+    },
+    {
+      "type": "object",
+      "properties": {
+        "templates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "schema": {
+                "type": "number",
+                "const": 2
+              },
+              "design": {
+                "type": "object",
+                "properties": {
+                  "w": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  "h": {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  }
+                },
+                "required": [
+                  "w",
+                  "h"
+                ]
+              },
+              "root": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200
+                  },
+                  "type": {
+                    "type": "string",
+                    "const": "frame"
+                  }
+                },
+                "required": [
+                  "id",
+                  "type"
+                ],
+                "additionalProperties": {}
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "key",
+                    "label"
+                  ],
+                  "additionalProperties": {}
+                }
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "schema",
+              "design",
+              "root",
+              "fields"
+            ],
+            "additionalProperties": {}
+          }
+        }
+      },
+      "required": [
+        "templates"
+      ],
+      "additionalProperties": {}
+    }
+  ],
+  "$id": "https://raw.githubusercontent.com/formless63/labebal/main/packs/schema/template.schema.json",
+  "title": "labebal template file (structural check only; see docs/TEMPLATES.md)"
+}

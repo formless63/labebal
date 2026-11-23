@@ -1,0 +1,712 @@
+{
+  "id": "t-std-arc-flash",
+  "name": "Arc flash label (NFPA 70E)",
+  "description": "Equipment arc flash and shock label with the fields NFPA 70E 130.5(H) asks for: nominal voltage, arc flash boundary, incident energy and working distance or PPE category, shock approach boundaries, date of the study. 4 x 3 in.",
+  "schema": 2,
+  "design": {
+    "w": 101.6,
+    "h": 76.2
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "safety",
+    "electrical"
+  ],
+  "fields": [
+    {
+      "key": "signal",
+      "label": "Signal word",
+      "type": "text",
+      "default": "WARNING",
+      "help": "WARNING, or DANGER above 40 cal/cm²."
+    },
+    {
+      "key": "voltage",
+      "label": "Nominal voltage",
+      "type": "text",
+      "default": "480 VAC"
+    },
+    {
+      "key": "boundary",
+      "label": "Arc flash boundary",
+      "type": "text",
+      "default": "1.2 m (47 in)"
+    },
+    {
+      "key": "energy",
+      "label": "Incident energy",
+      "type": "text",
+      "default": "8.0 cal/cm² at 455 mm (18 in)"
+    },
+    {
+      "key": "ppe",
+      "label": "PPE category / clothing",
+      "type": "text",
+      "default": "Category 2 · arc rated 8 cal/cm²"
+    },
+    {
+      "key": "limited",
+      "label": "Limited approach",
+      "type": "text",
+      "default": "1.07 m (3 ft 6 in)"
+    },
+    {
+      "key": "restricted",
+      "label": "Restricted approach",
+      "type": "text",
+      "default": "0.3 m (1 ft)"
+    },
+    {
+      "key": "equipment",
+      "label": "Equipment",
+      "type": "text",
+      "default": "MCC-2 · Bucket 3A"
+    },
+    {
+      "key": "studyDate",
+      "label": "Study date",
+      "type": "text",
+      "default": "2026-11-21"
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "column",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "align": "stretch",
+    "stroke": "black",
+    "strokeMm": 0.6,
+    "children": [
+      {
+        "id": "signalPanel",
+        "name": "Signal word panel",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.4
+        },
+        "padding": [
+          0.8,
+          2,
+          0.8,
+          2
+        ],
+        "gap": 1.5,
+        "align": "stretch",
+        "justify": "center",
+        "fill": "black",
+        "children": [
+          {
+            "id": "signalPanelAlert",
+            "name": "Safety alert symbol",
+            "type": "icon",
+            "icon": "alert-triangle",
+            "filled": true,
+            "color": "white",
+            "w": {
+              "kind": "hug"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "signalPanelWord",
+            "name": "Signal word",
+            "type": "text",
+            "text": "{{signal}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 20,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "uppercase": true,
+            "letterSpacing": 0.1,
+            "color": "white",
+            "w": {
+              "kind": "hug"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      },
+      {
+        "id": "hazard",
+        "name": "hazard",
+        "type": "text",
+        "text": "Arc flash and shock hazard\nAppropriate PPE required",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 9,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "uppercase": true,
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.3
+        }
+      },
+      {
+        "id": "l1",
+        "name": "l1",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "rows",
+        "name": "rows",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 6
+        },
+        "padding": [
+          0.5,
+          0,
+          0.5,
+          0
+        ],
+        "align": "stretch",
+        "children": [
+          {
+            "id": "rVolt",
+            "name": "rVolt",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.3,
+              1.5,
+              0.3,
+              1.5
+            ],
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rVoltCap",
+                "name": "rVoltCap",
+                "type": "text",
+                "text": "Shock hazard when cover is removed",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 52
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rVoltVal",
+                "name": "rVoltVal",
+                "type": "text",
+                "text": "{{voltage}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rBoundary",
+            "name": "rBoundary",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.3,
+              1.5,
+              0.3,
+              1.5
+            ],
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rBoundaryCap",
+                "name": "rBoundaryCap",
+                "type": "text",
+                "text": "Arc flash boundary",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 52
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rBoundaryVal",
+                "name": "rBoundaryVal",
+                "type": "text",
+                "text": "{{boundary}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rEnergy",
+            "name": "rEnergy",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.3,
+              1.5,
+              0.3,
+              1.5
+            ],
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rEnergyCap",
+                "name": "rEnergyCap",
+                "type": "text",
+                "text": "Incident energy at working distance",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 52
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rEnergyVal",
+                "name": "rEnergyVal",
+                "type": "text",
+                "text": "{{energy}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rPpe",
+            "name": "rPpe",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.3,
+              1.5,
+              0.3,
+              1.5
+            ],
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rPpeCap",
+                "name": "rPpeCap",
+                "type": "text",
+                "text": "PPE",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 52
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rPpeVal",
+                "name": "rPpeVal",
+                "type": "text",
+                "text": "{{ppe}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rLimited",
+            "name": "rLimited",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.3,
+              1.5,
+              0.3,
+              1.5
+            ],
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rLimitedCap",
+                "name": "rLimitedCap",
+                "type": "text",
+                "text": "Limited approach boundary",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 52
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rLimitedVal",
+                "name": "rLimitedVal",
+                "type": "text",
+                "text": "{{limited}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          },
+          {
+            "id": "rRestricted",
+            "name": "rRestricted",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "padding": [
+              0.3,
+              1.5,
+              0.3,
+              1.5
+            ],
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "rRestrictedCap",
+                "name": "rRestrictedCap",
+                "type": "text",
+                "text": "Restricted approach boundary",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 6,
+                "minSizePt": 3,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "uppercase": true,
+                "letterSpacing": 0.15,
+                "color": "black",
+                "w": {
+                  "kind": "pct",
+                  "pct": 52
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              },
+              {
+                "id": "rRestrictedVal",
+                "name": "rRestrictedVal",
+                "type": "text",
+                "text": "{{restricted}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "left",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l2",
+        "name": "l2",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "footer",
+        "name": "footer",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 0.8
+        },
+        "padding": [
+          0.3,
+          1.5,
+          0.3,
+          1.5
+        ],
+        "align": "stretch",
+        "children": [
+          {
+            "id": "equipment",
+            "name": "equipment",
+            "type": "text",
+            "text": "{{equipment}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 6,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "study",
+            "name": "study",
+            "type": "text",
+            "text": "Study {{studyDate}} · {{team:company}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 600,
+            "sizePt": 6,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "right",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r5",
+        "name": "Hide rLimited when limited is empty",
+        "when": {
+          "column": "limited",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "rLimited": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r6",
+        "name": "Hide rRestricted when restricted is empty",
+        "when": {
+          "column": "restricted",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "rRestricted": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

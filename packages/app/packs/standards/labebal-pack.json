@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/formless63/labebal/main/packs/schema/labebal-pack.schema.json",
+  "id": "standards",
+  "name": "Standard formats",
+  "version": "1.1.0",
+  "description": "Templates laid out after common label standards: GS1 logistic (SSCC) and UDI, ANSI Z535 safety, NFPA 70E arc flash, GHS chemical container, NFPA 704 diamond, TIA-606 cable ID, ECIA EIGP 114 reel, asset tag, shelf price label. Uses Team values for your company details. Turn off in Settings > Packs.",
+  "author": "labebal",
+  "folder": "Standard formats",
+  "templates": [
+    "templates/gs1-logistic.json",
+    "templates/z535.json",
+    "templates/arc-flash.json",
+    "templates/ghs.json",
+    "templates/nfpa704.json",
+    "templates/tia606.json",
+    "templates/eigp114.json",
+    "templates/udi.json",
+    "templates/asset.json",
+    "templates/shelf.json"
+  ],
+  "labels": [
+    "labels/standards.json"
+  ]
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Example host app</title>
+    <style>
+      /* The host's own styles: no Tailwind, nothing shared with labebal. */
+      body { margin: 0; font-family: Georgia, serif; background: #f4f1ea; color: #222; }
+      .host-bar { display: flex; gap: 1rem; align-items: center; padding: 0.6rem 1rem; background: #2d4a3e; color: #fff; }
+      .host-bar a { color: #fff; }
+      .host-bar strong { margin-right: auto; }
+      .host-page { padding: 2rem; }
+      .host-frame { height: calc(100dvh - 2.6rem); }
+      button { font-family: inherit; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

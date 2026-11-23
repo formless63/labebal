@@ -1,0 +1,335 @@
+{
+  "id": "ds-drawer-akro",
+  "name": "Akro-Mils drawers (sample)",
+  "columns": [
+    {
+      "id": "sku",
+      "name": "SKU"
+    },
+    {
+      "id": "category",
+      "name": "Category"
+    },
+    {
+      "id": "part",
+      "name": "Part"
+    },
+    {
+      "id": "spec",
+      "name": "Spec"
+    },
+    {
+      "id": "drawer",
+      "name": "Drawer"
+    }
+  ],
+  "rows": [
+    {
+      "id": "r-drawer-1",
+      "values": {
+        "sku": "SCR-M3-8",
+        "category": "Screws",
+        "part": "M3 × 8 socket head",
+        "spec": "DIN 912 · A2 stainless",
+        "drawer": "A1"
+      }
+    },
+    {
+      "id": "r-drawer-2",
+      "values": {
+        "sku": "SCR-M3-12",
+        "category": "Screws",
+        "part": "M3 × 12 socket head",
+        "spec": "DIN 912 · A2 stainless",
+        "drawer": "A2"
+      }
+    },
+    {
+      "id": "r-drawer-3",
+      "values": {
+        "sku": "SCR-M4-10",
+        "category": "Screws",
+        "part": "M4 × 10 button head",
+        "spec": "ISO 7380 · black oxide",
+        "drawer": "A3"
+      }
+    },
+    {
+      "id": "r-drawer-4",
+      "values": {
+        "sku": "NUT-M3",
+        "category": "Nuts",
+        "part": "M3 hex nut",
+        "spec": "DIN 934 · A2 stainless",
+        "drawer": "A4"
+      }
+    },
+    {
+      "id": "r-drawer-5",
+      "values": {
+        "sku": "NUT-M3-NYL",
+        "category": "Nuts",
+        "part": "M3 nylon lock nut",
+        "spec": "DIN 985 · zinc",
+        "drawer": "A5"
+      }
+    },
+    {
+      "id": "r-drawer-6",
+      "values": {
+        "sku": "NUT-M4",
+        "category": "Nuts",
+        "part": "M4 hex nut",
+        "spec": "DIN 934 · A2 stainless",
+        "drawer": "A6"
+      }
+    },
+    {
+      "id": "r-drawer-7",
+      "values": {
+        "sku": "WSH-M3",
+        "category": "Washers",
+        "part": "M3 flat washer",
+        "spec": "DIN 125 · A2 stainless",
+        "drawer": "A7"
+      }
+    },
+    {
+      "id": "r-drawer-8",
+      "values": {
+        "sku": "RES-220R",
+        "category": "Resistors",
+        "part": "220 Ω",
+        "spec": "¼ W · 1 % metal film",
+        "drawer": "B1"
+      }
+    },
+    {
+      "id": "r-drawer-9",
+      "values": {
+        "sku": "RES-1K",
+        "category": "Resistors",
+        "part": "1 kΩ",
+        "spec": "¼ W · 1 % metal film",
+        "drawer": "B2"
+      }
+    },
+    {
+      "id": "r-drawer-10",
+      "values": {
+        "sku": "RES-10K",
+        "category": "Resistors",
+        "part": "10 kΩ",
+        "spec": "¼ W · 1 % metal film",
+        "drawer": "B3"
+      }
+    },
+    {
+      "id": "r-drawer-11",
+      "values": {
+        "sku": "CAP-100N",
+        "category": "Capacitors",
+        "part": "100 nF",
+        "spec": "50 V ceramic · 2.54 mm",
+        "drawer": "B4"
+      }
+    },
+    {
+      "id": "r-drawer-12",
+      "values": {
+        "sku": "CAP-10U",
+        "category": "Capacitors",
+        "part": "10 µF",
+        "spec": "25 V electrolytic",
+        "drawer": "B5"
+      }
+    },
+    {
+      "id": "r-drawer-13",
+      "values": {
+        "sku": "LED-5-RED",
+        "category": "LEDs",
+        "part": "5 mm LED, red",
+        "spec": "2 V · 20 mA",
+        "drawer": "B6"
+      }
+    },
+    {
+      "id": "r-drawer-14",
+      "values": {
+        "sku": "CON-JST-XH2",
+        "category": "Connectors",
+        "part": "JST-XH 2-pin",
+        "spec": "2.54 mm · housing + pins",
+        "drawer": "C1"
+      }
+    },
+    {
+      "id": "r-drawer-15",
+      "values": {
+        "sku": "CON-DUPONT-F",
+        "category": "Connectors",
+        "part": "Dupont female",
+        "spec": "2.54 mm crimp terminals",
+        "drawer": "C2"
+      }
+    },
+    {
+      "id": "r-drawer-16",
+      "values": {
+        "sku": "IC-NE555",
+        "category": "ICs",
+        "part": "NE555 timer",
+        "spec": "DIP-8",
+        "drawer": "C3"
+      }
+    }
+  ],
+  "link": {
+    "templateId": "t-drawer-bin",
+    "fields": {
+      "title": "part",
+      "spec": "spec",
+      "code": "sku"
+    },
+    "keyColumn": "sku",
+    "nameColumn": "part",
+    "idPrefix": "l-drawer-bin-",
+    "rules": {
+      "mode": "all",
+      "rules": [
+        {
+          "id": "rule-screws",
+          "name": "Screws icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "Screws"
+          },
+          "then": {
+            "values": {
+              "icon": "mdi:screw-machine-round-top"
+            }
+          }
+        },
+        {
+          "id": "rule-nuts",
+          "name": "Nuts icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "Nuts"
+          },
+          "then": {
+            "values": {
+              "icon": "mdi:nut"
+            }
+          }
+        },
+        {
+          "id": "rule-washers",
+          "name": "Washers icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "Washers"
+          },
+          "then": {
+            "values": {
+              "icon": "mdi:circle-double"
+            }
+          }
+        },
+        {
+          "id": "rule-resistors",
+          "name": "Resistors icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "Resistors"
+          },
+          "then": {
+            "values": {
+              "icon": "circuit-resistor"
+            }
+          }
+        },
+        {
+          "id": "rule-capacitors",
+          "name": "Capacitors icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "Capacitors"
+          },
+          "then": {
+            "values": {
+              "icon": "circuit-capacitor"
+            }
+          }
+        },
+        {
+          "id": "rule-leds",
+          "name": "LEDs icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "LEDs"
+          },
+          "then": {
+            "values": {
+              "icon": "bulb"
+            }
+          }
+        },
+        {
+          "id": "rule-connectors",
+          "name": "Connectors icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "Connectors"
+          },
+          "then": {
+            "values": {
+              "icon": "plug-connected"
+            }
+          }
+        },
+        {
+          "id": "rule-ics",
+          "name": "ICs icon",
+          "when": {
+            "column": "category",
+            "op": "equals",
+            "value": "ICs"
+          },
+          "then": {
+            "values": {
+              "icon": "mdi:integrated-circuit-chip"
+            }
+          }
+        },
+        {
+          "id": "rule-electronics",
+          "name": "Electronics: white icon on black",
+          "when": {
+            "column": "category",
+            "op": "regex",
+            "value": "^(resistors|capacitors|leds|ics)$"
+          },
+          "then": {
+            "overrides": {
+              "iconBox": {
+                "fill": "black"
+              },
+              "icon": {
+                "color": "white"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "id": "t-drawer-bin",
+  "name": "Drawer bin (Akro-Mils)",
+  "description": "Small-parts drawer: category icon, part name, spec line, optional QR. Designed for 30 x 12 mm (Akro-Mils 10144/10164 drawers).",
+  "schema": 2,
+  "design": {
+    "w": 30,
+    "h": 12
+  },
+  "scaleText": true,
+  "tags": [
+    "drawers"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "Part name",
+      "type": "text",
+      "default": "M3 × 8"
+    },
+    {
+      "key": "spec",
+      "label": "Spec",
+      "type": "text",
+      "default": "Socket head · A2"
+    },
+    {
+      "key": "icon",
+      "label": "Icon (e.g. box, mdi:nut)",
+      "type": "text",
+      "default": "box"
+    },
+    {
+      "key": "code",
+      "label": "QR code (SKU or URL)",
+      "type": "text",
+      "default": ""
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      0.6,
+      0.6,
+      0.6,
+      0.6
+    ],
+    "gap": 0.8,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "iconBox",
+        "name": "Icon box",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fixed",
+          "mm": 8
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "padding": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "align": "stretch",
+        "justify": "center",
+        "radius": 1,
+        "fill": "none",
+        "children": [
+          {
+            "id": "icon",
+            "name": "Icon",
+            "type": "icon",
+            "icon": "{{icon}}",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      },
+      {
+        "id": "text",
+        "name": "Text",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.3,
+        "align": "stretch",
+        "justify": "center",
+        "children": [
+          {
+            "id": "title",
+            "name": "Part name",
+            "type": "text",
+            "text": "{{title}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 10,
+            "minSizePt": 5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "bottom",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 3
+            }
+          },
+          {
+            "id": "spec",
+            "name": "Spec",
+            "type": "text",
+            "text": "{{spec}}",
+            "font": "Atkinson Hyperlegible Next",
+            "sizePt": 6,
+            "minSizePt": 4,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "top",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill",
+              "weight": 2
+            },
+            "weight": 600
+          }
+        ]
+      },
+      {
+        "id": "qr",
+        "name": "QR code",
+        "type": "code",
+        "format": "qrcode",
+        "value": "{{code}}",
+        "ecc": "M",
+        "color": "black",
+        "w": {
+          "kind": "fixed",
+          "mm": 10.8
+        },
+        "h": {
+          "kind": "fill"
+        }
+      }
+    ]
+  },
+  "variants": [
+    {
+      "id": "narrow",
+      "name": "Labels under 38 mm wide: no QR",
+      "when": {
+        "maxW": 37
+      },
+      "patches": {
+        "qr": {
+          "hidden": true
+        }
+      }
+    }
+  ]
+}

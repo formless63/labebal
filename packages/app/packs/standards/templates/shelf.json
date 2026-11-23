@@ -1,0 +1,176 @@
+{
+  "id": "t-std-shelf",
+  "name": "Shelf / price label (UPC)",
+  "description": "Retail shelf edge label: product, price, unit price and the UPC-A barcode.",
+  "schema": 2,
+  "design": {
+    "w": 60,
+    "h": 30
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "retail"
+  ],
+  "fields": [
+    {
+      "key": "product",
+      "label": "Product",
+      "type": "text",
+      "default": "Organic oat drink 1 L"
+    },
+    {
+      "key": "price",
+      "label": "Price",
+      "type": "text",
+      "default": "$2.49"
+    },
+    {
+      "key": "unit",
+      "label": "Unit price",
+      "type": "text",
+      "default": "$2.49 / L"
+    },
+    {
+      "key": "upc",
+      "label": "UPC-A (11 digits)",
+      "type": "text",
+      "default": "03600029145",
+      "help": "The check digit is added. EAN-13: change the barcode kind."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "column",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      1.5,
+      2,
+      1.5,
+      2
+    ],
+    "gap": 1,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "product",
+        "name": "product",
+        "type": "text",
+        "text": "{{product}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 10,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "left",
+        "valign": "top",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.6
+        }
+      },
+      {
+        "id": "bottom",
+        "name": "bottom",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 3
+        },
+        "gap": 1.5,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "upc",
+            "name": "UPC",
+            "type": "code",
+            "format": "upca",
+            "value": "{{upc}}",
+            "showText": true,
+            "quietZone": true,
+            "color": "black",
+            "w": {
+              "kind": "fixed",
+              "mm": 36
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "prices",
+            "name": "prices",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "align": "stretch",
+            "children": [
+              {
+                "id": "price",
+                "name": "price",
+                "type": "text",
+                "text": "{{price}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 24,
+                "minSizePt": 3.5,
+                "fit": "shrink",
+                "align": "right",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 3
+                }
+              },
+              {
+                "id": "unit",
+                "name": "unit",
+                "type": "text",
+                "text": "{{unit}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 600,
+                "sizePt": 9,
+                "minSizePt": 5,
+                "fit": "shrink",
+                "align": "right",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 1.2
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

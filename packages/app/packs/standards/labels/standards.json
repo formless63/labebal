@@ -1,0 +1,116 @@
+[
+  {
+    "id": "l-std-gs1-logistic",
+    "templateId": "t-std-gs1-logistic",
+    "name": "GS1 logistic label (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Shipping"
+    ]
+  },
+  {
+    "id": "l-std-z535-warning",
+    "templateId": "t-std-z535",
+    "name": "Safety: WARNING hot surface",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Safety"
+    ]
+  },
+  {
+    "id": "l-std-z535-notice",
+    "templateId": "t-std-z535",
+    "name": "Safety: NOTICE authorised staff",
+    "values": {
+      "signal": "NOTICE",
+      "message": "Authorised personnel only.\nKeep this door closed.",
+      "symbol": ""
+    },
+    "tags": [
+      "standard",
+      "folder:Standard formats/Safety"
+    ]
+  },
+  {
+    "id": "l-std-arc-flash",
+    "templateId": "t-std-arc-flash",
+    "name": "Arc flash: MCC-2 (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Safety"
+    ]
+  },
+  {
+    "id": "l-std-ghs-ipa",
+    "templateId": "t-std-ghs",
+    "name": "GHS: isopropyl alcohol (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Safety"
+    ]
+  },
+  {
+    "id": "l-std-nfpa704",
+    "templateId": "t-std-nfpa704",
+    "name": "NFPA 704: flammable store (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Safety"
+    ]
+  },
+  {
+    "id": "l-std-tia606",
+    "templateId": "t-std-tia606",
+    "name": "TIA-606: patch panel port (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Cables"
+    ]
+  },
+  {
+    "id": "l-std-eigp114",
+    "templateId": "t-std-eigp114",
+    "name": "EIGP 114: 10k resistor reel (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Parts"
+    ]
+  },
+  {
+    "id": "l-std-udi",
+    "templateId": "t-std-udi",
+    "name": "UDI: catheter (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Retail and GS1"
+    ]
+  },
+  {
+    "id": "l-std-asset",
+    "templateId": "t-std-asset",
+    "name": "Asset tag (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Inventory"
+    ]
+  },
+  {
+    "id": "l-std-shelf",
+    "templateId": "t-std-shelf",
+    "name": "Shelf label (sample)",
+    "values": {},
+    "tags": [
+      "standard",
+      "folder:Standard formats/Retail and GS1"
+    ]
+  }
+]

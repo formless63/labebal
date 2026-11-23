@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`rich text and tables render to clean 1-bit > rich-pixel m2-30x15 1`] = `
+{
+  "dots": 2857,
+  "grey": 0,
+  "h": 177,
+  "sha": "091496a053dcc86a",
+  "w": 352,
+}
+`;
+
+exports[`rich text and tables render to clean 1-bit > rich-pixel n1-14x30 1`] = `
+{
+  "dots": 1237,
+  "grey": 0,
+  "h": 96,
+  "sha": "a125d704db81b5ea",
+  "w": 240,
+}
+`;
+
+exports[`rich text and tables render to clean 1-bit > table-pixel m2-30x15 1`] = `
+{
+  "dots": 20358,
+  "grey": 0,
+  "h": 177,
+  "sha": "69ec53ff6bc58db2",
+  "w": 352,
+}
+`;
+
+exports[`rich text and tables render to clean 1-bit > table-pixel n1-14x30 1`] = `
+{
+  "dots": 7606,
+  "grey": 0,
+  "h": 96,
+  "sha": "60240ff3b15e6696",
+  "w": 240,
+}
+`;

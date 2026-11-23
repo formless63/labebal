@@ -1,0 +1,266 @@
+{
+  "id": "t-std-nfpa704",
+  "name": "NFPA 704 hazard diamond",
+  "description": "Fire diamond for storage areas and tanks: health (left), flammability (top), instability (right), 0-4 each, and special hazards (bottom: W, OX, SA). Drawn in outline; NFPA 704 colours the quadrants blue, red, yellow and white.",
+  "schema": 2,
+  "design": {
+    "w": 50,
+    "h": 50
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "safety",
+    "chemical"
+  ],
+  "fields": [
+    {
+      "key": "health",
+      "label": "Health (0-4)",
+      "type": "text",
+      "default": "2"
+    },
+    {
+      "key": "flammability",
+      "label": "Flammability (0-4)",
+      "type": "text",
+      "default": "3"
+    },
+    {
+      "key": "instability",
+      "label": "Instability (0-4)",
+      "type": "text",
+      "default": "0"
+    },
+    {
+      "key": "special",
+      "label": "Special",
+      "type": "text",
+      "default": "",
+      "help": "W (reacts with water), OX (oxidiser), SA (simple asphyxiant), or empty."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "free",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "align": "stretch",
+    "children": [
+      {
+        "id": "flamFrame",
+        "name": "Flammability diamond",
+        "type": "polygon",
+        "sides": 4,
+        "fill": "none",
+        "stroke": "black",
+        "strokeMm": 0.8,
+        "w": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "x": 12.5,
+        "y": 0,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "flamVal",
+        "name": "Flammability",
+        "type": "text",
+        "text": "{{flammability}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 28,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fixed",
+          "mm": 13
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 11
+        },
+        "x": 18.5,
+        "y": 7,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "healthFrame",
+        "name": "Health diamond",
+        "type": "polygon",
+        "sides": 4,
+        "fill": "none",
+        "stroke": "black",
+        "strokeMm": 0.8,
+        "w": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "x": 0,
+        "y": 12.5,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "healthVal",
+        "name": "Health",
+        "type": "text",
+        "text": "{{health}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 28,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fixed",
+          "mm": 13
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 11
+        },
+        "x": 6,
+        "y": 19.5,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "instFrame",
+        "name": "Instability diamond",
+        "type": "polygon",
+        "sides": 4,
+        "fill": "none",
+        "stroke": "black",
+        "strokeMm": 0.8,
+        "w": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "x": 25,
+        "y": 12.5,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "instVal",
+        "name": "Instability",
+        "type": "text",
+        "text": "{{instability}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 28,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fixed",
+          "mm": 13
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 11
+        },
+        "x": 31,
+        "y": 19.5,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "specialFrame",
+        "name": "Special diamond",
+        "type": "polygon",
+        "sides": 4,
+        "fill": "none",
+        "stroke": "black",
+        "strokeMm": 0.8,
+        "w": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 25
+        },
+        "x": 12.5,
+        "y": 25,
+        "ax": "scale",
+        "ay": "scale"
+      },
+      {
+        "id": "specialVal",
+        "name": "Special",
+        "type": "text",
+        "text": "{{special}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 16,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fixed",
+          "mm": 13
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 11
+        },
+        "x": 18.5,
+        "y": 32,
+        "ax": "scale",
+        "ay": "scale"
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r17",
+        "name": "Hide specialVal when special is empty",
+        "when": {
+          "column": "special",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "specialVal": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "transport": "-Com COM7",
+  "connection": {
+    "deviceName": "COM7 serial",
+    "result": 3
+  },
+  "model": {
+    "model": "M2_H",
+    "id": [
+      4608
+    ],
+    "dpi": 300,
+    "printDirection": "top",
+    "printheadPixels": 567,
+    "paperTypes": [
+      1,
+      5,
+      2,
+      10
+    ],
+    "densityMin": 1,
+    "densityMax": 5,
+    "densityDefault": 3
+  },
+  "printTask": "B1",
+  "printerInfo": {
+    "settings": {
+      "connectionSound": true,
+      "powerSound": false,
+      "autoShutdownTime": 3
+    },
+    "connectResult": 3,
+    "protocolVersion": 4,
+    "supportColor": false,
+    "modelId": 4608,
+    "serial": "T000000001",
+    "mac": "00:00:00:00:00:01",
+    "batteryPercents": 100,
+    "printheadWidth": 576,
+    "hardwareVersion": "1.01",
+    "softwareVersion": "1.50",
+    "resolutionClass": 3,
+    "capabilities": {
+      "language": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "printMode": [
+        2
+      ],
+      "uhfRfid": [],
+      "printheadDpi": 300,
+      "rfidSupport": [
+        1,
+        2
+      ],
+      "batteryRange": {
+        "max": 4,
+        "min": 0
+      },
+      "densityRange": {
+        "max": 5,
+        "min": 1
+      },
+      "speedRange": {
+        "max": 5,
+        "min": 1
+      },
+      "supportedLabelTypes": [
+        10,
+        1,
+        2,
+        5
+      ],
+      "printheadWidth": 576,
+      "maxPrintHeight": 3600,
+      "labelHeightAndGap": 1,
+      "printheadPosition": 2,
+      "volumeSupport": [
+        1
+      ],
+      "hostStyle": [
+        1,
+        2
+      ],
+      "printProtocol": [
+        1,
+        2,
+        3
+      ],
+      "autoShutdownRange": {
+        "max": 4,
+        "min": 0
+      },
+      "cutterSupport": [],
+      "cutterDepthRange": {
+        "max": 0,
+        "min": 0
+      },
+      "printControl": [
+        1,
+        2
+      ],
+      "pauseTimeSupport": [],
+      "paperDetection": 0,
+      "realTimeClock": [],
+      "keyFunctions": [
+        {
+          "key": 0,
+          "functions": []
+        }
+      ],
+      "unknown19": 1
+    }
+  },
+  "rfid": {
+    "labelRfidInfo": {
+      "tagPresent": true,
+      "uuid": "0000000000000000",
+      "barCode": "042225005",
+      "serialNumber": "R000000000000001",
+      "allPaper": 270,
+      "usedPaper": 0,
+      "consumablesType": 1
+    },
+    "paperInfo": {
+      "valid": true,
+      "gapHeightPixel": 36,
+      "totalHeightPixel": 396,
+      "paperType": 1,
+      "gapHeight": 3,
+      "totalHeight": 33,
+      "paperWidthPixel": 600,
+      "paperWidth": 50,
+      "direction": 0,
+      "tailLengthPixel": 0,
+      "tailLength": 0,
+      "paperHeight": 33,
+      "paperHeightPixel": 396
+    },
+    "ribbonRfidInfo": {
+      "tagPresent": true,
+      "uuid": "0000000000000000",
+      "barCode": "6978642803430",
+      "serialNumber": "R000000000000002",
+      "allPaper": 2880,
+      "usedPaper": 18,
+      "consumablesType": 6
+    }
+  },
+  "heartbeat": {
+    "batteryPercents": 100,
+    "temp": 69,
+    "lidClosed": true,
+    "paperInserted": true,
+    "paperRfidSuccess": true,
+    "ribbonRfidSuccess": true,
+    "ribbonInserted": true,
+    "wifiRssi": 0
+  }
+}

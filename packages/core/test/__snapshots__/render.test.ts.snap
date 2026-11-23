@@ -1,0 +1,301 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Label Muncher renders stably > m2-20x10--mystery-cables 1`] = `
+{
+  "dots": 12546,
+  "grey": 0,
+  "h": 118,
+  "sha": "0e3426916d7f1b3f",
+  "w": 232,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-20x10--odd-socks 1`] = `
+{
+  "dots": 12819,
+  "grey": 0,
+  "h": 118,
+  "sha": "02cc2c0626227013",
+  "w": 232,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-20x10--snacks 1`] = `
+{
+  "dots": 12761,
+  "grey": 0,
+  "h": 118,
+  "sha": "ca48120b97cfc6a6",
+  "w": 232,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-20x10--spare-screws 1`] = `
+{
+  "dots": 12532,
+  "grey": 0,
+  "h": 118,
+  "sha": "7acb41e591685469",
+  "w": 232,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-25x15--mystery-cables 1`] = `
+{
+  "dots": 24191,
+  "grey": 0,
+  "h": 177,
+  "sha": "b734ebe7a474acd9",
+  "w": 288,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-25x15--odd-socks 1`] = `
+{
+  "dots": 23879,
+  "grey": 0,
+  "h": 177,
+  "sha": "b9529f9f124735e4",
+  "w": 288,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-25x15--snacks 1`] = `
+{
+  "dots": 23821,
+  "grey": 0,
+  "h": 177,
+  "sha": "fdea173a83390aeb",
+  "w": 288,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-25x15--spare-screws 1`] = `
+{
+  "dots": 24018,
+  "grey": 0,
+  "h": 177,
+  "sha": "8cbbba9d526b1006",
+  "w": 288,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-30x15--mystery-cables 1`] = `
+{
+  "dots": 29647,
+  "grey": 0,
+  "h": 177,
+  "sha": "c9c874a05498496f",
+  "w": 352,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-30x15--odd-socks 1`] = `
+{
+  "dots": 28924,
+  "grey": 0,
+  "h": 177,
+  "sha": "d7620495e095c3ae",
+  "w": 352,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-30x15--snacks 1`] = `
+{
+  "dots": 28888,
+  "grey": 0,
+  "h": 177,
+  "sha": "6a46ca712ab64da0",
+  "w": 352,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-30x15--spare-screws 1`] = `
+{
+  "dots": 29963,
+  "grey": 0,
+  "h": 177,
+  "sha": "79d68d1e0e76eb5e",
+  "w": 352,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-50x30--mystery-cables 1`] = `
+{
+  "dots": 93939,
+  "grey": 0,
+  "h": 354,
+  "sha": "d7f74a6e80af0433",
+  "w": 576,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-50x30--odd-socks 1`] = `
+{
+  "dots": 90936,
+  "grey": 0,
+  "h": 354,
+  "sha": "eda5ce1e87b5afcb",
+  "w": 576,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-50x30--snacks 1`] = `
+{
+  "dots": 91532,
+  "grey": 0,
+  "h": 354,
+  "sha": "c6ab00c036ace895",
+  "w": 576,
+}
+`;
+
+exports[`Label Muncher renders stably > m2-50x30--spare-screws 1`] = `
+{
+  "dots": 93112,
+  "grey": 0,
+  "h": 354,
+  "sha": "f145dcb9f4f5ee67",
+  "w": 576,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x22--mystery-cables 1`] = `
+{
+  "dots": 7598,
+  "grey": 0,
+  "h": 96,
+  "sha": "8f061c4bd2ab0bf9",
+  "w": 176,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x22--odd-socks 1`] = `
+{
+  "dots": 7559,
+  "grey": 0,
+  "h": 96,
+  "sha": "fcd18646dbd330b7",
+  "w": 176,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x22--snacks 1`] = `
+{
+  "dots": 7537,
+  "grey": 0,
+  "h": 96,
+  "sha": "9bcf8c6b7ced7d41",
+  "w": 176,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x22--spare-screws 1`] = `
+{
+  "dots": 7616,
+  "grey": 0,
+  "h": 96,
+  "sha": "c9577aa332ee71ea",
+  "w": 176,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x30--mystery-cables 1`] = `
+{
+  "dots": 10878,
+  "grey": 0,
+  "h": 96,
+  "sha": "c1abb854b0516d22",
+  "w": 240,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x30--odd-socks 1`] = `
+{
+  "dots": 11151,
+  "grey": 0,
+  "h": 96,
+  "sha": "8c637a7c224a98a1",
+  "w": 240,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x30--snacks 1`] = `
+{
+  "dots": 11093,
+  "grey": 0,
+  "h": 96,
+  "sha": "0ca48b4a43e17095",
+  "w": 240,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x30--spare-screws 1`] = `
+{
+  "dots": 11436,
+  "grey": 0,
+  "h": 96,
+  "sha": "db919d3c6ee656f3",
+  "w": 240,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x50--mystery-cables 1`] = `
+{
+  "dots": 18571,
+  "grey": 0,
+  "h": 96,
+  "sha": "1b97c0f283432351",
+  "w": 400,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x50--odd-socks 1`] = `
+{
+  "dots": 18844,
+  "grey": 0,
+  "h": 96,
+  "sha": "320112f1d01a4ae0",
+  "w": 400,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x50--snacks 1`] = `
+{
+  "dots": 18786,
+  "grey": 0,
+  "h": 96,
+  "sha": "976b391e8f53ec23",
+  "w": 400,
+}
+`;
+
+exports[`Label Muncher renders stably > n1-14x50--spare-screws 1`] = `
+{
+  "dots": 19129,
+  "grey": 0,
+  "h": 96,
+  "sha": "59a72cc847ad5c5d",
+  "w": 400,
+}
+`;
+
+exports[`test pattern > m2-30x15 1`] = `
+{
+  "dots": 5221,
+  "grey": 0,
+  "h": 177,
+  "sha": "2cfcd301fe5e18fb",
+  "w": 352,
+}
+`;
+
+exports[`test pattern > n1-14x30 1`] = `
+{
+  "dots": 2798,
+  "grey": 0,
+  "h": 96,
+  "sha": "9196b8f3b729ba84",
+  "w": 240,
+}
+`;

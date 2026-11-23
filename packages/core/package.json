@@ -1,0 +1,38 @@
+{
+  "name": "@labebal/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "test": "vitest run",
+    "import-lbx": "tsx scripts/import-lbx.ts",
+    "printer-probe": "tsx scripts/printer-probe.ts",
+    "known-rolls": "tsx scripts/known-rolls.ts",
+    "packs": "tsx scripts/pack.ts"
+  },
+  "dependencies": {
+    "@mmote/niimbluelib": "0.49.1",
+    "bwip-js": "^4.11.4",
+    "jszip": "^3.10.2",
+    "opentype.js": "^2.0.0",
+    "papaparse": "^5.7.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.1.1",
+    "@types/node": "^20.19.43",
+    "@types/papaparse": "^5.5.2",
+    "@xmldom/xmldom": "^0.9.12",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^5.1.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "labebal-example-vite-host",
+  "private": true,
+  "type": "module",
+  "description": "labebal mounted at /labels inside another app: a Vite + React page (no Tailwind) and a plain Node server.",
+  "scripts": {
+    "dev": "node server.mjs"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "^0.5.16",
+    "@labebal/app": "workspace:*",
+    "drizzle-orm": "^0.45.4",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.0",
+    "vite": "^8.3.8"
+  },
+  "license": "MIT"
+}

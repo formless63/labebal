@@ -1,0 +1,88 @@
+{
+  "id": "t-demo-badge",
+  "name": "Demo: inverted badge",
+  "description": "Inverted content area with rounded corners (clean margin), outlined title.",
+  "schema": 2,
+  "design": {
+    "w": 30,
+    "h": 12
+  },
+  "scaleText": true,
+  "invertByDefault": true,
+  "invertArea": "content",
+  "borderRadiusMm": 1.5,
+  "tags": [
+    "demo"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "Title",
+      "type": "text",
+      "default": "BADGE"
+    },
+    {
+      "key": "icon",
+      "label": "Icon",
+      "type": "text",
+      "default": "bolt"
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      1,
+      1.5,
+      1,
+      1.5
+    ],
+    "gap": 1,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "icon",
+        "name": "Icon",
+        "type": "icon",
+        "icon": "{{icon}}",
+        "filled": true,
+        "color": "black",
+        "w": {
+          "kind": "hug"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      },
+      {
+        "id": "title",
+        "name": "Title",
+        "type": "text",
+        "text": "{{title}}",
+        "font": "Roboto Condensed",
+        "weight": 800,
+        "sizePt": 12,
+        "fit": "shrink",
+        "align": "center",
+        "valign": "middle",
+        "color": "white",
+        "stroke": "black",
+        "strokeMm": 0.25,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      }
+    ]
+  }
+}

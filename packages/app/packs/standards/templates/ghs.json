@@ -1,0 +1,904 @@
+{
+  "id": "t-std-ghs",
+  "name": "Chemical container (GHS / OSHA HazCom)",
+  "description": "Workplace / secondary container label with the GHS elements: product identifier, signal word, pictograms, hazard and precautionary statements, supplier. Pictograms are icon stand-ins drawn in black; containers shipped to others need the official red-bordered pictograms.",
+  "schema": 2,
+  "design": {
+    "w": 101.6,
+    "h": 76.2
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "safety",
+    "chemical"
+  ],
+  "fields": [
+    {
+      "key": "product",
+      "label": "Product name",
+      "type": "text",
+      "default": "Isopropyl alcohol 99%"
+    },
+    {
+      "key": "signal",
+      "label": "Signal word",
+      "type": "text",
+      "default": "Danger",
+      "help": "Danger or Warning."
+    },
+    {
+      "key": "pictograms",
+      "label": "Pictograms",
+      "type": "text",
+      "default": "flame, irritant",
+      "help": "Comma separated: flame, oxidiser, explosive, corrosive, gas, toxic, irritant, health, environment."
+    },
+    {
+      "key": "hazards",
+      "label": "Hazard statements",
+      "type": "multiline",
+      "default": "Highly flammable liquid and vapour.\nCauses serious eye irritation.\nMay cause drowsiness or dizziness."
+    },
+    {
+      "key": "precautions",
+      "label": "Precautionary statements",
+      "type": "multiline",
+      "default": "Keep away from heat, sparks and open flames. No smoking.\nWear eye protection. IF IN EYES: rinse cautiously with water for several minutes."
+    },
+    {
+      "key": "supplier",
+      "label": "Supplier",
+      "type": "text",
+      "default": "",
+      "help": "Name, address and phone of the supplier. Empty: your Team values (company, address, phone)."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "column",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      2,
+      2.5,
+      2,
+      2.5
+    ],
+    "gap": 1,
+    "align": "stretch",
+    "stroke": "black",
+    "strokeMm": 0.5,
+    "children": [
+      {
+        "id": "product",
+        "name": "product",
+        "type": "text",
+        "text": "{{product}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 16,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "left",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 1.6
+        }
+      },
+      {
+        "id": "hazardRow",
+        "name": "hazardRow",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 2.6
+        },
+        "gap": 2,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "pictograms",
+            "name": "Pictograms",
+            "type": "frame",
+            "layout": "row",
+            "w": {
+              "kind": "hug"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 1,
+            "align": "stretch",
+            "children": [
+              {
+                "id": "ghs-flame",
+                "name": "Pictogram: Flammable",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-flame-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-flame-icon",
+                    "name": "Flammable",
+                    "type": "icon",
+                    "icon": "mdi:fire",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-oxidiser",
+                "name": "Pictogram: Oxidiser (flame over circle)",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-oxidiser-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-oxidiser-icon",
+                    "name": "Oxidiser (flame over circle)",
+                    "type": "icon",
+                    "icon": "mdi:fire-circle",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-explosive",
+                "name": "Pictogram: Explosive (exploding bomb)",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-explosive-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-explosive-icon",
+                    "name": "Explosive (exploding bomb)",
+                    "type": "icon",
+                    "icon": "game-icons:bright-explosion",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-corrosive",
+                "name": "Pictogram: Corrosive",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-corrosive-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-corrosive-icon",
+                    "name": "Corrosive",
+                    "type": "icon",
+                    "icon": "game-icons:acid",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-gas",
+                "name": "Pictogram: Gas under pressure",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-gas-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-gas-icon",
+                    "name": "Gas under pressure",
+                    "type": "icon",
+                    "icon": "mdi:gas-cylinder",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-toxic",
+                "name": "Pictogram: Acute toxicity (skull)",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-toxic-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-toxic-icon",
+                    "name": "Acute toxicity (skull)",
+                    "type": "icon",
+                    "icon": "mdi:skull-crossbones",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-irritant",
+                "name": "Pictogram: Irritant / harmful (exclamation)",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-irritant-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-irritant-icon",
+                    "name": "Irritant / harmful (exclamation)",
+                    "type": "icon",
+                    "icon": "mdi:exclamation-thick",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-health",
+                "name": "Pictogram: Health hazard",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-health-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-health-icon",
+                    "name": "Health hazard",
+                    "type": "icon",
+                    "icon": "game-icons:internal-organ",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              },
+              {
+                "id": "ghs-environment",
+                "name": "Pictogram: Hazardous to the environment",
+                "type": "frame",
+                "layout": "free",
+                "w": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "h": {
+                  "kind": "fixed",
+                  "mm": 16
+                },
+                "align": "stretch",
+                "children": [
+                  {
+                    "id": "ghs-environment-frame",
+                    "name": "Diamond",
+                    "type": "polygon",
+                    "sides": 4,
+                    "fill": "none",
+                    "stroke": "black",
+                    "strokeMm": 0.9,
+                    "w": {
+                      "kind": "fill"
+                    },
+                    "h": {
+                      "kind": "fill"
+                    },
+                    "x": 0,
+                    "y": 0,
+                    "ax": "scale",
+                    "ay": "scale"
+                  },
+                  {
+                    "id": "ghs-environment-icon",
+                    "name": "Hazardous to the environment",
+                    "type": "icon",
+                    "icon": "mdi:fish-off",
+                    "color": "black",
+                    "w": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "h": {
+                      "kind": "fixed",
+                      "mm": 7
+                    },
+                    "x": 4.5,
+                    "y": 4.5,
+                    "ax": "scale",
+                    "ay": "scale"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "signal",
+            "name": "signal",
+            "type": "text",
+            "text": "{{signal}}",
+            "font": "Atkinson Hyperlegible Next",
+            "weight": 800,
+            "sizePt": 20,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "center",
+            "valign": "middle",
+            "uppercase": true,
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      },
+      {
+        "id": "hazards",
+        "name": "hazards",
+        "type": "text",
+        "text": "{{hazards}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 800,
+        "sizePt": 8,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "left",
+        "valign": "top",
+        "lineHeight": 1.1,
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 2.4
+        }
+      },
+      {
+        "id": "precautions",
+        "name": "precautions",
+        "type": "text",
+        "text": "{{precautions}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 600,
+        "sizePt": 7,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "left",
+        "valign": "top",
+        "lineHeight": 1.1,
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 2.4
+        }
+      },
+      {
+        "id": "l1",
+        "name": "l1",
+        "type": "line",
+        "direction": "horizontal",
+        "color": "black",
+        "strokeMm": 0.4,
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fixed",
+          "mm": 0.4
+        }
+      },
+      {
+        "id": "supplier",
+        "name": "supplier",
+        "type": "text",
+        "text": "{{supplier}}",
+        "font": "Atkinson Hyperlegible Next",
+        "weight": 600,
+        "sizePt": 6,
+        "minSizePt": 3.5,
+        "fit": "shrink",
+        "align": "left",
+        "valign": "middle",
+        "color": "black",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill",
+          "weight": 0.7
+        }
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r7",
+        "name": "Show Flammable only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "flame",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-flame": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r8",
+        "name": "Show Oxidiser (flame over circle) only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "oxidiser",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-oxidiser": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r9",
+        "name": "Show Explosive (exploding bomb) only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "explosive",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-explosive": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r10",
+        "name": "Show Corrosive only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "corrosive",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-corrosive": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r11",
+        "name": "Show Gas under pressure only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "gas",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-gas": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r12",
+        "name": "Show Acute toxicity (skull) only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "toxic",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-toxic": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r13",
+        "name": "Show Irritant / harmful (exclamation) only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "irritant",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-irritant": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r14",
+        "name": "Show Health hazard only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "health",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-health": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r15",
+        "name": "Show Hazardous to the environment only when listed",
+        "when": {
+          "column": "pictograms",
+          "op": "contains",
+          "value": "environment",
+          "not": true
+        },
+        "then": {
+          "overrides": {
+            "ghs-environment": {
+              "hidden": true
+            }
+          }
+        }
+      },
+      {
+        "id": "r16",
+        "name": "No supplier: use Team values",
+        "when": {
+          "column": "supplier",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "supplier": {
+              "text": "{{team:company}} · {{team:address}} · {{team:phone}}"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

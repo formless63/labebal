@@ -1,0 +1,201 @@
+{
+  "id": "t-std-udi",
+  "name": "Medical device UDI (GS1)",
+  "description": "Unique Device Identification label: GS1 Data Matrix with the device GTIN (01), expiry (17), lot (10) and serial (21), and the same data in readable text.",
+  "schema": 2,
+  "design": {
+    "w": 50,
+    "h": 25
+  },
+  "scaleText": true,
+  "tags": [
+    "standard",
+    "medical",
+    "gs1"
+  ],
+  "fields": [
+    {
+      "key": "gtin",
+      "label": "GTIN (13 digits)",
+      "type": "text",
+      "default": "0952123454321",
+      "help": "The check digit is added."
+    },
+    {
+      "key": "expiry",
+      "label": "Use by",
+      "type": "text",
+      "default": "2028-12-31",
+      "help": "A date; printed as YYMMDD in the code."
+    },
+    {
+      "key": "lot",
+      "label": "Lot",
+      "type": "text",
+      "default": "A1234"
+    },
+    {
+      "key": "serial",
+      "label": "Serial",
+      "type": "text",
+      "default": "",
+      "help": "Empty: no (21) serial."
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "padding": [
+      1.2,
+      1.5,
+      1.2,
+      1.5
+    ],
+    "gap": 1.5,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "dm",
+        "name": "UDI Data Matrix",
+        "type": "code",
+        "format": "gs1datamatrix",
+        "value": "(01){{gtin|gs1}}(17){{expiry|date:YYMMDD}}(10){{lot}}(21){{serial}}",
+        "quietZone": true,
+        "color": "black",
+        "w": {
+          "kind": "hug"
+        },
+        "h": {
+          "kind": "fill"
+        }
+      },
+      {
+        "id": "hri",
+        "name": "hri",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.2,
+        "align": "stretch",
+        "children": [
+          {
+            "id": "hGtin",
+            "name": "hGtin",
+            "type": "text",
+            "text": "(01) {{gtin|gs1}}",
+            "font": "JetBrains Mono",
+            "weight": 800,
+            "sizePt": 7,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "hExp",
+            "name": "hExp",
+            "type": "text",
+            "text": "(17) {{expiry|date:YYMMDD}}",
+            "font": "JetBrains Mono",
+            "weight": 600,
+            "sizePt": 7,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "hLot",
+            "name": "hLot",
+            "type": "text",
+            "text": "(10) {{lot}}",
+            "font": "JetBrains Mono",
+            "weight": 600,
+            "sizePt": 7,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "hSerial",
+            "name": "hSerial",
+            "type": "text",
+            "text": "(21) {{serial}}",
+            "font": "JetBrains Mono",
+            "weight": 600,
+            "sizePt": 7,
+            "minSizePt": 3.5,
+            "fit": "shrink",
+            "align": "left",
+            "valign": "middle",
+            "color": "black",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "r20",
+        "name": "No serial",
+        "when": {
+          "column": "serial",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "hSerial": {
+              "hidden": true
+            },
+            "dm": {
+              "value": "(01){{gtin|gs1}}(17){{expiry|date:YYMMDD}}(10){{lot}}"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

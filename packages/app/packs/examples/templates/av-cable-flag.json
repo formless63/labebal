@@ -1,0 +1,223 @@
+{
+  "id": "t-cable-av",
+  "name": "AV cable flag",
+  "description": "Cable flag with an icon for thick AV cables (8 mm wrap zone). Made for 14 × 75 mm tape.",
+  "schema": 2,
+  "design": {
+    "w": 74,
+    "h": 11
+  },
+  "tags": [
+    "cable",
+    "av"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "Title",
+      "type": "text",
+      "default": "HDMI"
+    },
+    {
+      "key": "detail",
+      "label": "Detail",
+      "type": "text",
+      "default": "Projector"
+    },
+    {
+      "key": "icon",
+      "label": "Icon",
+      "type": "text",
+      "default": "mdi:video-input-hdmi"
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "align": "stretch",
+    "children": [
+      {
+        "id": "a",
+        "name": "Front",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.6,
+        "padding": [
+          0.3,
+          0.6,
+          0.3,
+          0.6
+        ],
+        "align": "stretch",
+        "children": [
+          {
+            "id": "a-icon",
+            "name": "Icon",
+            "type": "icon",
+            "icon": "{{icon}}",
+            "color": "black",
+            "w": {
+              "kind": "fixed",
+              "mm": 6
+            },
+            "h": {
+              "kind": "fill"
+            }
+          },
+          {
+            "id": "a-texts",
+            "name": "Texts",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 0.3,
+            "align": "stretch",
+            "justify": "center",
+            "children": [
+              {
+                "id": "a-texts-title",
+                "name": "Title",
+                "type": "text",
+                "text": "{{title}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 10,
+                "minSizePt": 5,
+                "fit": "shrink",
+                "align": "center",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              },
+              {
+                "id": "a-texts-detail",
+                "name": "Detail",
+                "type": "text",
+                "text": "{{detail}}",
+                "font": "Atkinson Hyperlegible Next",
+                "sizePt": 5.5,
+                "minSizePt": 4.5,
+                "fit": "shrink",
+                "align": "center",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                },
+                "weight": 600
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wrap",
+        "name": "Wrap zone",
+        "type": "frame",
+        "layout": "free",
+        "wrapDiameterMm": 8,
+        "w": {
+          "kind": "fixed",
+          "mm": 25.632741228718345
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "children": [
+          {
+            "id": "fold-l",
+            "name": "Fold mark",
+            "type": "line",
+            "direction": "vertical",
+            "color": "black",
+            "strokeMm": 0.15,
+            "x": 0,
+            "y": 0,
+            "w": {
+              "kind": "fixed",
+              "mm": 0.2
+            },
+            "h": {
+              "kind": "fixed",
+              "mm": 1
+            },
+            "ay": "start"
+          },
+          {
+            "id": "fold-r",
+            "name": "Fold mark",
+            "type": "line",
+            "direction": "vertical",
+            "color": "black",
+            "strokeMm": 0.15,
+            "x": 25.432741228718346,
+            "y": 0,
+            "w": {
+              "kind": "fixed",
+              "mm": 0.2
+            },
+            "h": {
+              "kind": "fixed",
+              "mm": 1
+            },
+            "ax": "end",
+            "ay": "start"
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "name": "Back",
+        "type": "frame",
+        "layout": "row",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "gap": 0.6,
+        "padding": [
+          0.3,
+          0.6,
+          0.3,
+          0.6
+        ],
+        "align": "stretch",
+        "children": [],
+        "mirror": {
+          "of": "a",
+          "mode": "reflect"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,148 @@
+[
+  {
+    "id": "l-demo-icon",
+    "templateId": "t-demo-elements",
+    "name": "Demo: icon + text",
+    "values": {
+      "title": "M3 × 8",
+      "detail": "Socket head, stainless",
+      "icon": "nut"
+    },
+    "overrides": {
+      "code": {
+        "hidden": true
+      },
+      "image": {
+        "hidden": true
+      }
+    },
+    "tags": [
+      "demo",
+      "folder:Examples/Elements"
+    ]
+  },
+  {
+    "id": "l-demo-qr",
+    "templateId": "t-demo-elements",
+    "name": "Demo: QR + text",
+    "values": {
+      "title": "Scan me",
+      "detail": "QR code, whole-dot modules",
+      "code": "https://tabler.io/icons"
+    },
+    "overrides": {
+      "icon": {
+        "hidden": true
+      },
+      "image": {
+        "hidden": true
+      }
+    },
+    "tags": [
+      "demo",
+      "folder:Examples/Elements"
+    ]
+  },
+  {
+    "id": "l-demo-barcode",
+    "templateId": "t-demo-elements",
+    "name": "Demo: Code 128",
+    "values": {
+      "title": "Bin 42",
+      "detail": "Code 128 with text",
+      "code": "WB-0042"
+    },
+    "overrides": {
+      "icon": {
+        "hidden": true
+      },
+      "image": {
+        "hidden": true
+      },
+      "code": {
+        "format": "code128",
+        "showText": true
+      }
+    },
+    "tags": [
+      "demo",
+      "folder:Examples/Elements"
+    ]
+  },
+  {
+    "id": "l-demo-image",
+    "templateId": "t-demo-elements",
+    "name": "Demo: image placeholder",
+    "values": {
+      "title": "Your logo",
+      "detail": "Set an image URL (/api/assets/…)",
+      "image": ""
+    },
+    "overrides": {
+      "icon": {
+        "hidden": true
+      },
+      "code": {
+        "hidden": true
+      }
+    },
+    "tags": [
+      "demo",
+      "folder:Examples/Elements"
+    ]
+  },
+  {
+    "id": "l-demo-serial",
+    "templateId": "t-demo-elements",
+    "name": "Demo: date + serial",
+    "values": {
+      "title": "Batch",
+      "icon": "calendar"
+    },
+    "overrides": {
+      "code": {
+        "hidden": true
+      },
+      "image": {
+        "hidden": true
+      },
+      "detail": {
+        "text": "{{date:DD MMM YYYY}} · #{{seq:0000}}"
+      }
+    },
+    "tags": [
+      "demo",
+      "folder:Examples/Elements"
+    ]
+  },
+  {
+    "id": "l-demo-outline",
+    "templateId": "t-demo-elements",
+    "name": "Demo: outlined text",
+    "values": {
+      "title": "FRAGILE",
+      "detail": "Outlined title, filled icon",
+      "icon": "glass-full"
+    },
+    "overrides": {
+      "code": {
+        "hidden": true
+      },
+      "image": {
+        "hidden": true
+      },
+      "icon": {
+        "filled": true
+      },
+      "title": {
+        "color": "white",
+        "stroke": "black",
+        "strokeMm": 0.3
+      }
+    },
+    "tags": [
+      "demo",
+      "folder:Examples/Elements"
+    ]
+  }
+]

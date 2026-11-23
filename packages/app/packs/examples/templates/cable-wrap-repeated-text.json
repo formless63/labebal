@@ -1,0 +1,171 @@
+{
+  "id": "t-cable-wrap",
+  "name": "Cable wrap (repeated text)",
+  "description": "Wraps right round the cable (about 12 mm across); the text repeats so it shows from every side.",
+  "schema": 2,
+  "design": {
+    "w": 39,
+    "h": 11
+  },
+  "tags": [
+    "cable"
+  ],
+  "fields": [
+    {
+      "key": "title",
+      "label": "Title",
+      "type": "text",
+      "default": "LAN 12"
+    },
+    {
+      "key": "detail",
+      "label": "Detail",
+      "type": "text",
+      "default": ""
+    }
+  ],
+  "root": {
+    "id": "root",
+    "name": "Label",
+    "type": "frame",
+    "layout": "row",
+    "w": {
+      "kind": "fill"
+    },
+    "h": {
+      "kind": "fill"
+    },
+    "gap": 0.8,
+    "align": "stretch",
+    "children": [
+      {
+        "id": "c1",
+        "name": "Text",
+        "type": "frame",
+        "layout": "column",
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "align": "stretch",
+        "justify": "center",
+        "children": [
+          {
+            "id": "c1-texts",
+            "name": "Texts",
+            "type": "frame",
+            "layout": "column",
+            "w": {
+              "kind": "fill"
+            },
+            "h": {
+              "kind": "fill"
+            },
+            "gap": 0.3,
+            "align": "stretch",
+            "justify": "center",
+            "children": [
+              {
+                "id": "c1-texts-title",
+                "name": "Title",
+                "type": "text",
+                "text": "{{title}}",
+                "font": "Atkinson Hyperlegible Next",
+                "weight": 800,
+                "sizePt": 9,
+                "minSizePt": 5,
+                "fit": "shrink",
+                "align": "center",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill",
+                  "weight": 2
+                }
+              },
+              {
+                "id": "c1-texts-detail",
+                "name": "Detail",
+                "type": "text",
+                "text": "{{detail}}",
+                "font": "Atkinson Hyperlegible Next",
+                "sizePt": 5,
+                "minSizePt": 4.5,
+                "fit": "shrink",
+                "align": "center",
+                "valign": "middle",
+                "color": "black",
+                "w": {
+                  "kind": "fill"
+                },
+                "h": {
+                  "kind": "fill"
+                },
+                "weight": 600
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c2",
+        "name": "Repeat",
+        "type": "frame",
+        "layout": "free",
+        "mirror": {
+          "of": "c1",
+          "mode": "repeat"
+        },
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "children": []
+      },
+      {
+        "id": "c3",
+        "name": "Repeat",
+        "type": "frame",
+        "layout": "free",
+        "mirror": {
+          "of": "c1",
+          "mode": "repeat"
+        },
+        "w": {
+          "kind": "fill"
+        },
+        "h": {
+          "kind": "fill"
+        },
+        "children": []
+      }
+    ]
+  },
+  "rules": {
+    "mode": "all",
+    "rules": [
+      {
+        "id": "no-detail",
+        "name": "No detail: title only",
+        "when": {
+          "column": "detail",
+          "op": "isEmpty"
+        },
+        "then": {
+          "overrides": {
+            "c1-texts-detail": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}
