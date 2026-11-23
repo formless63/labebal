@@ -188,9 +188,12 @@ packages as `.tgz` files. Point both at the same release, and override the copy
 }
 ```
 
-That is the npm form. With pnpm the override goes in `pnpm-workspace.yaml`:
+That is the npm and bun form (bun: put the link in the override instead of `$@labebal/core`).
+With pnpm both settings go in `pnpm-workspace.yaml`; recent versions refuse a link
+for a dependency of a dependency unless told otherwise:
 
 ```yaml
+blockExoticSubdeps: false
 overrides:
   "@labebal/core": https://github.com/formless63/labebal/releases/download/v0.1.0/labebal-core-0.1.0.tgz
 ```
