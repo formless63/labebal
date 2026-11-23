@@ -67,6 +67,15 @@ describe("packs on a database", () => {
     expect(await db.select().from(schema.packs).where(eq(schema.packs.id, "standards"))).toHaveLength(0);
   });
 
+  it("a new library starts with the Label Muncher", async () => {
+    const fresh = drizzle(new PGlite(), { schema }) as unknown as DB;
+    await migrate(fresh as never, { migrationsFolder: path.join(web, "drizzle") });
+    const { setupBuiltinPacks } = await import("./packs");
+    await setupBuiltinPacks(fresh);
+    expect((await fresh.select().from(schema.packs)).map((p) => p.id).sort()).toEqual(["standards", "welcome"]);
+    expect((await fresh.select().from(schema.labels)).some((l) => l.tags.includes("welcome"))).toBe(true);
+  });
+
   it("install shows it again and keeps the edited label", async () => {
     const { installPack, packsView } = await import("./packs");
     const { getLibrary } = await import("./library");

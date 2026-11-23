@@ -58,12 +58,13 @@ import { builtinPacksDir } from "./host";
 export const BUILTIN_SOURCE_ID = "builtin-examples";
 export const EXAMPLES_PACK_ID = "examples";
 export const STANDARDS_PACK_ID = "standards";
+export const WELCOME_PACK_ID = "welcome";
 
 const builtinDir = builtinPacksDir;
 /** Folders of the built-in packs: Examples, then Standard formats beside it. */
 const builtinDirs = () => {
   const examples = path.resolve(builtinDir());
-  return [examples, path.join(path.dirname(examples), "standards")];
+  return [examples, ...["standards", "welcome"].map((d) => path.join(path.dirname(examples), d))];
 };
 const builtinManifestUrl = () => pathToFileURL(path.join(builtinDir(), PACK_MANIFEST)).href;
 const builtinManifestUrls = () => builtinDirs().map((d) => pathToFileURL(path.join(d, PACK_MANIFEST)).href);
@@ -852,6 +853,8 @@ export async function setupBuiltinPacks(db: DB) {
   const examples = loaded.find((p) => p.manifest.id === EXAMPLES_PACK_ID);
   if (!examples) console.warn("[packs] built-in examples not available; set LABEBAL_BUILTIN_PACKS to the packs/examples folder");
   if (!loaded.length) return;
+  // A new, empty library starts with something to print.
+  const fresh = !have && !(await db.select({ id: templates.id }).from(templates).limit(1)).length;
   // Offered for the first time: Standard formats is installed (and can be turned off).
   const newlyOffered = !have?.index?.packs.some((p) => p.id === STANDARDS_PACK_ID) && index.packs.some((p) => p.id === STANDARDS_PACK_ID);
   if (have) await db.update(packSources).set({ index, url: builtinManifestUrl(), lastFetchedAt: new Date(), lastError: null, ...(have.name === "Built-in examples" ? { name: "Built-in packs" } : {}) }).where(eq(packSources.id, BUILTIN_SOURCE_ID));
@@ -859,7 +862,8 @@ export async function setupBuiltinPacks(db: DB) {
     await db.insert(packSources).values({ id: BUILTIN_SOURCE_ID, kind: "builtin", input: "builtin:examples", url: builtinManifestUrl(), name: "Built-in packs", index, lastFetchedAt: new Date() });
     if (examples) await adoptSeeded(db, examples);
   }
-  if (newlyOffered) await installStandards(db, reader, index);
+  if (newlyOffered) await installBuiltin(db, reader, index, STANDARDS_PACK_ID);
+  if (fresh) await installBuiltin(db, reader, index, WELCOME_PACK_ID);
   // Not awaited: this runs while the db is still opening (getDb), and updates
   // read datasets through getDb, which would wait for this function forever.
   setTimeout(() => void updateBuiltins(db, reader, index), 0);
@@ -885,18 +889,18 @@ async function updateBuiltins(db: DB, reader: PackReader, index: PackSourceIndex
   }
 }
 
-/** Install the Standard formats pack (once, when the built-in source first offers it). Never fails start-up. */
-async function installStandards(db: DB, reader: PackReader, index: PackSourceIndex) {
-  const entry = index.packs.find((p) => p.id === STANDARDS_PACK_ID);
+/** Install a built-in pack (once, when it is first offered). Never fails start-up. */
+async function installBuiltin(db: DB, reader: PackReader, index: PackSourceIndex, id: string) {
+  const entry = index.packs.find((p) => p.id === id);
   if (!entry) return;
-  const [installed] = await db.select({ id: packs.id }).from(packs).where(eq(packs.id, STANDARDS_PACK_ID));
+  const [installed] = await db.select({ id: packs.id }).from(packs).where(eq(packs.id, id));
   if (installed) return;
   try {
     const pack = await loadPack(entry.url, reader, { withAssets: true });
     const r = await syncPack(db, pack, { sourceId: BUILTIN_SOURCE_ID, url: entry.url, labelIds: null });
     console.log(`[packs] installed ${pack.manifest.name} ${pack.manifest.version}: ${r.inserted} items`);
   } catch (e) {
-    console.warn(`[packs] could not install the Standard formats pack (${errText(e)})`);
+    console.warn(`[packs] could not install the built-in ${id} pack (${errText(e)})`);
   }
 }
 

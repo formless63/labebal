@@ -1,0 +1,41 @@
+name: Release
+# Push a tag such as v0.2.0 (after setting the same version in both packages).
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+  id-token: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - name: Versions match the tag
+        run: |
+          for p in core app; do
+            v=$(node -p "require('./packages/$p/package.json').version")
+            [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "packages/$p is $v, the tag is $GITHUB_REF_NAME"; exit 1; }
+          done
+      - run: pnpm test
+      - run: mkdir out && for p in core app; do (cd packages/$p && pnpm pack --pack-destination ../../out); done
+      # Trusted publishing (no token stored): set up once per package on npmjs.com.
+      - name: Publish to npm
+        run: |
+          npm install -g npm@latest
+          for p in core app; do
+            name="@labebal/$p"; v="${GITHUB_REF_NAME#v}"
+            if npm view "$name@$v" version >/dev/null 2>&1; then echo "$name@$v is already published"; continue; fi
+            npm publish "./out/labebal-$p-$v.tgz" --access public --provenance
+          done
+      - name: GitHub release
+        run: gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && gh release upload "$GITHUB_REF_NAME" out/*.tgz --clobber || gh release create "$GITHUB_REF_NAME" out/*.tgz --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}

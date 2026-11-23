@@ -2,20 +2,22 @@
 
 labebal is one container: the Next.js server plus an embedded Postgres
 (PGlite) whose files live in a volume. Printing happens in the user's browser
-over Web Bluetooth / Web Serial; the server never talks to printers.
+over Web Bluetooth / Web Serial; the server only talks to network (ZPL) printers.
 
 ## Run it
 
 ```sh
-docker compose up -d --build
+docker run -d --name labebal -p 3000:3000 -v labebal-data:/data --restart unless-stopped ghcr.io/formless63/labebal:latest
 # -> http://localhost:3000 (Bluetooth works on localhost)
 ```
 
-Or without compose:
+Images are built for amd64 and arm64. `latest` follows the `main` branch; pin a
+release with a version tag such as `0.1.0`.
+
+Or build it yourself from a checkout:
 
 ```sh
-docker build -t labebal .
-docker run -d --name labebal -p 3000:3000 -v labebal-data:/data --restart unless-stopped labebal
+docker compose up -d --build
 ```
 
 On first start the server runs the Drizzle migrations and sets up the
@@ -135,13 +137,10 @@ client id / secret from a Pocket ID OIDC client whose callback URL is the one
 Pangolin shows). Then restrict the labebal resource to those users. Passkeys
 from Pocket ID work fine on the same Chrome profile used for printing.
 
-If other systems push labels to `/api/import`, give that path a separate
-Pangolin rule (e.g. allow by header / IP) until token auth lands (roadmap Phase 4).
-
 ## GitHub (pack sharing)
 
 Settings > Packs > GitHub lets people connect GitHub, publish their packs to a
-repo and follow other people's pack repos (user guide: `docs/PACKS.md`).
+repo and follow other people's pack repos (user guide: [packs](PACKS.md)).
 **Connect GitHub** uses the labebal GitHub App
 ([github.com/apps/labebal](https://github.com/apps/labebal)) through GitHub's
 device flow: the app shows a code, the person types it on github.com. No

@@ -16,12 +16,12 @@ the `/api/v1/` path, so machines can call it.
 ## Tokens
 
 Create one in **Settings > API access** (one per system, so you can revoke one
-without breaking the others). The token (`wmb_...`) is shown once; only a
+without breaking the others). The token (`lbl_...`) is shown once; only a
 SHA-256 hash is stored. Revoking takes effect immediately.
 
 ```sh
 export LABEBAL=https://labels.example.com
-export TOKEN=wmb_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TOKEN=lbl_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 Errors: `401` with `{"error": "..."}` for a missing / invalid / revoked token,
@@ -351,7 +351,7 @@ curl -X POST --data-binary @labebal.zip "$LABEBAL/api/backup/restore?mode=replac
 
 ### Packs
 
-See `docs/PACKS.md`. Changes need the `admin` role (reset: `editor`); viewers can list, refresh and export.
+See [packs](PACKS.md). Changes need the `admin` role (reset: `editor`); viewers can list, refresh and export.
 `GET /api/library` leaves out templates / labels of disabled packs and adds
 `packs: { packs: [{ id, name, version, enabled }], items: { "template:<id>" | "label:<id>": { pack, changed } } }`.
 
@@ -374,7 +374,7 @@ See `docs/PACKS.md`. Changes need the `admin` role (reset: `editor`); viewers ca
 
 ### GitHub
 
-See `docs/PACKS.md` (GitHub) and `docs/DEPLOY.md` (GitHub). Accounts belong to
+See [packs](PACKS.md) (GitHub) and [deploy](DEPLOY.md) (GitHub). Accounts belong to
 the caller: their user scope when identity headers are on (`401` when not
 signed in), one shared instance scope when they are off. Responses never
 contain tokens. GitHub problems come back as `{ error }` with 400 / 403 / 404 /

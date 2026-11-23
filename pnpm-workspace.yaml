@@ -2,6 +2,7 @@ packages:
   - apps/*
   - packages/*
   - examples/*
+  - docs
 allowBuilds:
   sharp: false
   unrs-resolver: false

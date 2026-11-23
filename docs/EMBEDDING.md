@@ -2,7 +2,7 @@
 
 labebal is two things:
 
-- **The container** (`Dockerfile`, `docs/DEPLOY.md`): the whole app with its own
+- **The container** (`Dockerfile`, [deploy](DEPLOY.md)): the whole app with its own
   database and sign-in from the proxy. This is how most people run it.
 - **The module** (`packages/app`, package `@labebal/app`): the same screens and
   API as a library, for mounting inside another app (yours, or anything
@@ -21,10 +21,31 @@ This page is about the module.
 
 ## Install
 
-Not on a registry yet. In
-this monorepo, depend on it as `"@labebal/app": "workspace:*"`. It ships
-TypeScript source, so a bundler that transpiles workspace packages is needed
-(Next: `transpilePackages: ["@labebal/core", "@labebal/app"]`; Vite does it as is).
+```sh
+npm install @labebal/app @labebal/core drizzle-orm
+# or: pnpm add / bun add / yarn add
+```
+
+The packages are compiled ES modules with type definitions. `@labebal/app` needs
+React 18.3 or 19 and Drizzle 0.45 from your app.
+
+**Next.js**: let Next bundle labebal, keep the embedded database out of the
+bundle, and (for `output: "standalone"`) copy labebal's runtime files:
+
+```ts
+// next.config.ts
+export default {
+  serverExternalPackages: ["@electric-sql/pglite"],
+  // only with output: "standalone"
+  outputFileTracingIncludes: { "/labels/api/**": ["./node_modules/@labebal/app/{drizzle,assets,packs}/**"] },
+};
+```
+
+Don't list `@labebal/app` in `serverExternalPackages`: its screens would get a
+second copy of React. Start the server from the app's own folder, or set
+`filesDir` (below), so labebal finds its migrations, fonts and packs.
+
+**Plain Node, Vite, anything else**: no setup needed.
 
 ## Server
 
@@ -64,12 +85,12 @@ for background work (data-source syncs, webhook retries, backups), or pass
 | `anonymousRole` | `"viewer"` | Role when `user` returns null. |
 | `basePath` | `""` | Mount point, e.g. `/labels`. Must match the client's `basePath`. |
 | `publicUrl` | `LABEBAL_PUBLIC_URL`, else the request origin + `basePath` | Where label QR codes (`{{labelUrl}}`) point. |
-| `env` | `process.env` | Any `LABEBAL_*` setting from `docs/DEPLOY.md`, e.g. `{ LABEBAL_GITHUB_CLIENT_ID: "" }`. Wins over the environment. |
+| `env` | `process.env` | Any `LABEBAL_*` setting from [deploy](DEPLOY.md), e.g. `{ LABEBAL_GITHUB_CLIENT_ID: "" }`. Wins over the environment. |
 | `jobs` | `"timer"` | `"host"` = no timer; call `runJobs()` yourself. |
 | `features.backups` | `true` | labebal's own backups (`/api/backup`, scheduled zips). Turn off when the platform backs up the database. |
 | `features.apiTokens` | `true` | labebal's API tokens for `/api/v1`. Turn off and pass `apiAuth` to use the host's API keys instead. |
 | `apiAuth(req)` | none | Checks a bearer token for `/api/v1/*`: return a user or null. |
-| `filesDir` | the package folder | Where `drizzle/`, `assets/` and `packs/` are. Set it when a bundler moves the server code (the standalone Next build sets it from `process.cwd()`). |
+| `filesDir` | the package folder, or `node_modules/@labebal/app` under the working directory | Where `drizzle/`, `assets/` and `packs/` are. Set it when a bundler moves the server code and the working directory is somewhere else. |
 
 ### Roles
 
@@ -151,8 +172,9 @@ pnpm --filter labebal-example-vite-host dev
 
 Then open http://localhost:5180/labels.
 
-## Publishing (later)
+## Versions
 
-The plan is to publish compiled JavaScript (ESM + type definitions + the CSS)
-to npm after the rename. Until then the package is TypeScript source inside
-this repo.
+Both packages are released together with the same version number. Before 1.0, a
+minor version can change props, options or the template format; the release
+notes say so. Database migrations run by themselves and only go forward, so back
+up before updating.

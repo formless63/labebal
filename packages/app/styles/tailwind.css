@@ -10,3 +10,4 @@
  * "@labebal/app/theme.css" for default tokens.
  */
 @source "../src";
+@source "../dist";

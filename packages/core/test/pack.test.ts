@@ -318,7 +318,7 @@ describe("install / update / remove rules", () => {
 });
 
 describe("packs in this repo", () => {
-  for (const name of ["examples", "standards"]) {
+  for (const name of ["examples", "standards", "welcome"]) {
     it(`${name} loads and checks clean`, async () => {
       const url = pathToFileURL(resolve(repo, "packages/app/packs", name, "labebal-pack.json")).href;
       const p = await loadPack(url, fsReader, { withAssets: true });

@@ -15,5 +15,8 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/formless63/labebal.git"
+  },
+  "devDependencies": {
+    "tsdown": "^0.23.7"
   }
 }

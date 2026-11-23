@@ -4,7 +4,7 @@
  * The browser-facing `/api/*` routes are NOT authenticated here: the app is
  * meant to run behind an authenticating reverse proxy (Pangolin, optionally
  * with Pocket ID) at the network edge. `/api/v1/*` is for other systems
- * (inventory, scripts) and always needs `Authorization: Bearer wmb_...`.
+ * (inventory, scripts) and always needs `Authorization: Bearer lbl_...`.
  * A host app can check its own API keys instead (`apiAuth` in host.ts); with
  * `features.apiTokens: false` labebal's tokens are not accepted at all.
  */

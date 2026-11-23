@@ -5,7 +5,8 @@
 **/next-env.d.ts
 **/.env*
 .git
-docs
+docs/*
+!docs/package.json
 Dockerfile
 compose.yaml
 .dockerignore

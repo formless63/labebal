@@ -19,11 +19,11 @@ export const isSpreadsheetFile = (name: string) => SPREADSHEET.test(name);
 /** Strip the extension for a default dataset name. */
 export const baseName = (name: string) => name.replace(/\.(csv|tsv|txt|xlsx|xlsm|xlsb|xls|ods|fods)$/i, "");
 
-type WorkBook = import("xlsx").WorkBook;
+type WorkBook = import("@labebal/app/vendor/xlsx").WorkBook;
 
 /** Sheet -> table via CSV, so column naming / trimming match CSV imports exactly. */
 export async function sheetToTable(wb: WorkBook, sheet: string): Promise<ParsedTable> {
-  const XLSX = await import("xlsx");
+  const XLSX = await import("@labebal/app/vendor/xlsx");
   const ws = wb.Sheets[sheet];
   if (!ws) return { columns: [], rows: [], warnings: [`No sheet "${sheet}"`] };
   // Formatted text (what the cell shows), so dates / leading zeros look like in Excel.
@@ -32,7 +32,7 @@ export async function sheetToTable(wb: WorkBook, sheet: string): Promise<ParsedT
 }
 
 export async function readWorkbook(file: File): Promise<WorkBook> {
-  const XLSX = await import("xlsx");
+  const XLSX = await import("@labebal/app/vendor/xlsx");
   return XLSX.read(await file.arrayBuffer(), { type: "array", cellDates: false, dense: true });
 }
 

@@ -1,15 +1,59 @@
 {
   "name": "@labebal/core",
   "version": "0.1.0",
-  "private": true,
+  "description": "Label engine: document schema, reflow layout, 1-bit renderer, codes, packs and printer drivers (Niimbot, Brother P-touch, ZPL). Framework-free.",
+  "keywords": [
+    "label",
+    "labels",
+    "label-printer",
+    "niimbot",
+    "zpl",
+    "zebra",
+    "brother",
+    "p-touch",
+    "barcode",
+    "thermal-printer",
+    "web-bluetooth"
+  ],
+  "license": "MIT",
+  "author": "formless63",
+  "homepage": "https://formless63.github.io/labebal/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formless63/labebal.git",
+    "directory": "packages/core"
+  },
+  "bugs": "https://github.com/formless63/labebal/issues",
   "type": "module",
+  "sideEffects": true,
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
     "./*": "./src/*.ts"
   },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./package.json": "./package.json",
+      "./*": {
+        "types": "./dist/*.d.ts",
+        "default": "./dist/*.js"
+      }
+    }
+  },
   "scripts": {
+    "build": "tsdown",
+    "prepack": "pnpm build",
     "typecheck": "tsc -p .",
     "test": "vitest run",
     "import-lbx": "tsx scripts/import-lbx.ts",
@@ -33,6 +77,5 @@
     "tsx": "^4.23.15",
     "typescript": "^5.9.3",
     "vitest": "^5.1.0"
-  },
-  "license": "MIT"
+  }
 }

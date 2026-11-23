@@ -1,11 +1,11 @@
 /**
- * Regression tests from real printers (docs/reference/*-probe.json).
+ * Regression tests from real printers (docs/printers/*-probe.json).
  */
 import { describe, expect, it } from "vitest";
 import { KNOWN_ROLLS, labelPixels, matchRoll, printerFor, sizeById } from "../src/media";
 import { rollFromRfid } from "../src/printer";
-import m2 from "../../../docs/reference/m2-probe.json";
-import n1 from "../../../docs/reference/n1-probe.json";
+import m2 from "../../../docs/printers/m2-probe.json";
+import n1 from "../../../docs/printers/n1-probe.json";
 
 describe("real M2 (firmware 1.50)", () => {
   const roll = rollFromRfid(m2.rfid as never)!;

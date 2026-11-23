@@ -2,12 +2,11 @@
   "$schema": "https://raw.githubusercontent.com/formless63/labebal/main/packs/schema/labebal-pack.schema.json",
   "id": "examples",
   "name": "Examples",
-  "version": "1.2.0",
-  "description": "Sample templates and labels: the Label Muncher, Akro-Mils drawer bins and faces (with a sample dataset and category rules), element showcase (icons, codes, images, tokens), cable flags.",
+  "version": "1.3.0",
+  "description": "Sample templates and labels: Akro-Mils drawer bins and faces (with a sample dataset and category rules), element showcase (icons, codes, images, tokens), cable flags.",
   "author": "labebal",
   "folder": "Examples",
   "templates": [
-    "templates/label-muncher.json",
     "templates/drawer-bin-akro-mils.json",
     "templates/drawer-face-48-16-akro-mils.json",
     "templates/demo-icons-codes-images.json",
@@ -17,7 +16,6 @@
     "templates/cable-wrap-repeated-text.json"
   ],
   "labels": [
-    "labels/label-muncher.csv",
     "labels/drawer-bin-akro-mils.csv",
     "labels/drawer-face-48-16-akro-mils.csv",
     "labels/demo-icons-codes-images.json",

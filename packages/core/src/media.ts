@@ -57,7 +57,7 @@ export interface PrinterProfile {
 
 export const PRINTERS: PrinterProfile[] = [
   { model: "N1", name: "Niimbot N1 / B18", dpi: 203, headDots: 96, direction: "left", densityMin: 1, densityMax: 3, densityDefault: 2, rfid: true, maxTapeMm: 15, family: "niimbot", thermal: "transfer" },
-  // headDots: the real M2 reports a 576-dot printhead (docs/reference/m2-probe.json); niimbluelib's table says 567.
+  // headDots: the real M2 reports a 576-dot printhead (docs/printers/m2-probe.json); niimbluelib's table says 567.
   { model: "M2_H", name: "Niimbot M2", dpi: 300, headDots: 576, direction: "top", densityMin: 1, densityMax: 5, densityDefault: 3, rfid: true, maxTapeMm: 50, family: "niimbot", thermal: "transfer" },
   // Brother P-touch (TZe tape, ink in the cassette): 180 dpi, 128 pins, tape up to 24 mm. No darkness control.
   { model: "PT-D610BT", name: "Brother PT-D610BT", dpi: 180, headDots: 128, direction: "left", densityMin: 1, densityMax: 1, densityDefault: 1, maxTapeMm: 24, family: "brother-pt", thermal: "transfer", ink: "cassette" },
@@ -528,7 +528,7 @@ export const MODEL_CALIBRATION_HINTS: Record<string, { offset: { x: number; y: n
  */
 export const KNOWN_ROLLS: Record<string, { sizeId: string; materialId?: string }> = {
   ...Object.fromEntries(CATALOGUE_ROLL_GROUPS.flatMap(([sizeId, materialId, codes]) => codes.split(" ").map((c) => [c, materialId ? { sizeId, materialId } : { sizeId }]))),
-  // Verified on a real N1 (docs/reference/n1-probe.json): laser gold roll (tag total 228 = 190 labels x 1.2).
+  // Verified on a real N1 (docs/printers/n1-probe.json): laser gold roll (tag total 228 = 190 labels x 1.2).
   // Also in the catalogue as an alias of roll 022824294 "EL14*30-190Laser Gold".
   "08062224": { sizeId: "n1-14x30", materialId: "laser-gold" },
 };

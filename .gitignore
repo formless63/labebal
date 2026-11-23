@@ -11,7 +11,6 @@ node_modules
 dist
 dist-ssr
 *.local
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -22,11 +21,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
 # Next.js / data
 .next
 .data
 next-env.d.ts
 *.tsbuildinfo
-
 labebal.env
+*.tgz
+docs/reference/
+docs/public/openapi.json
+
+docs/.vitepress/dist/
+docs/.vitepress/cache/
+dist/

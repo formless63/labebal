@@ -19,6 +19,7 @@ COPY apps/web/package.json apps/web/
 COPY packages/core/package.json packages/core/
 COPY packages/app/package.json packages/app/
 COPY examples/vite-host/package.json examples/vite-host/
+COPY docs/package.json docs/
 # Only what the standalone app needs (not the example host's Vite).
 RUN --mount=type=cache,id=pnpm-store,target=/pnpm/store \
     pnpm install --frozen-lockfile --filter web...

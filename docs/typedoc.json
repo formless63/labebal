@@ -1,0 +1,21 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["../packages/core/src/index.ts", "../packages/app/src/client.tsx", "../packages/app/src/server.ts"],
+  "tsconfig": "./tsconfig.typedoc.json",
+  "plugin": ["typedoc-plugin-markdown"],
+  "out": "./reference",
+  "readme": "none",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "gitRevision": "main",
+  "hideBreadcrumbs": true,
+  "useCodeBlocks": true,
+  "parametersFormat": "table",
+  "interfacePropertiesFormat": "table",
+  "outputFileStrategy": "modules",
+  "entryFileName": "index",
+  "skipErrorChecking": true,
+  "sanitizeComments": true,
+  "name": "Package API"
+}

@@ -1,7 +1,7 @@
 /**
  * API tokens for the public /api/v1 API.
  *
- * Tokens look like `wmb_<43 chars base64url>` (256 random bits). Only the
+ * Tokens look like `lbl_<43 chars base64url>` (256 random bits). Only the
  * SHA-256 hash is stored, so a token can be shown exactly once at creation.
  * Revoked tokens are kept (marked) so the list shows what was revoked when.
  */
@@ -10,12 +10,12 @@ import { and, desc, eq, isNull } from "drizzle-orm";
 import { getDb } from "../db";
 import { apiTokens } from "../db/schema";
 
-export const TOKEN_PREFIX = "wmb_";
+export const TOKEN_PREFIX = "lbl_";
 
 export interface TokenInfo {
   id: string;
   name: string;
-  /** e.g. "wmb_Ab3x…" */
+  /** e.g. "lbl_Ab3x…" */
   hint: string;
   createdAt: string;
   lastUsedAt: string | null;

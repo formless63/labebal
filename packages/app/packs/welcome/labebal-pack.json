@@ -1,0 +1,15 @@
+{
+  "$schema": "https://raw.githubusercontent.com/formless63/labebal/main/packs/schema/labebal-pack.schema.json",
+  "id": "welcome",
+  "name": "Label Muncher",
+  "version": "1.0.0",
+  "description": "A small monster with your words in its mouth. Installed on a new labebal so there is something to print.",
+  "author": "labebal",
+  "folder": "Label Muncher",
+  "templates": [
+    "templates/label-muncher.json"
+  ],
+  "labels": [
+    "labels/label-muncher.csv"
+  ]
+}

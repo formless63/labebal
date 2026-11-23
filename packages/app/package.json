@@ -1,8 +1,26 @@
 {
   "name": "@labebal/app",
   "version": "0.1.0",
-  "private": true,
-  "description": "labebal as a module: label designer and Niimbot printing screens (React) plus a fetch-standard server handler (Postgres).",
+  "description": "labebal as a module: label designer and printing screens (React) plus a fetch-standard server handler (Postgres).",
+  "keywords": [
+    "label",
+    "label-designer",
+    "label-printer",
+    "niimbot",
+    "zpl",
+    "react",
+    "drizzle",
+    "postgres"
+  ],
+  "license": "MIT",
+  "author": "formless63",
+  "homepage": "https://formless63.github.io/labebal/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/formless63/labebal.git",
+    "directory": "packages/app"
+  },
+  "bugs": "https://github.com/formless63/labebal/issues",
   "type": "module",
   "sideEffects": [
     "*.css"
@@ -14,16 +32,41 @@
     "./tailwind.css": "./styles/tailwind.css",
     "./theme.css": "./styles/theme.css",
     "./package.json": "./package.json",
-    "./styles.css": "./styles/labebal.css"
+    "./styles.css": "./styles/labebal.css",
+    "./vendor/xlsx": "./src/vendor/xlsx.ts"
   },
   "files": [
-    "src",
+    "dist",
     "drizzle",
     "assets",
     "packs",
     "styles"
   ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/client.d.ts",
+        "default": "./dist/client.js"
+      },
+      "./server": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      },
+      "./schema": {
+        "types": "./dist/db/schema.d.ts",
+        "default": "./dist/db/schema.js"
+      },
+      "./vendor/xlsx": "./dist/vendor/xlsx.js",
+      "./tailwind.css": "./styles/tailwind.css",
+      "./theme.css": "./styles/theme.css",
+      "./styles.css": "./styles/labebal.css",
+      "./package.json": "./package.json"
+    }
+  },
   "scripts": {
+    "build": "tsdown && node scripts/build-css.mjs && node -e \"fs.copyFileSync('node_modules/xlsx/LICENSE','dist/vendor/xlsx.LICENSE.txt')\"",
+    "prepack": "pnpm build",
     "typecheck": "tsc -p .",
     "test": "vitest run",
     "gen:routes": "node scripts/gen-routes.mjs",
@@ -32,7 +75,8 @@
   },
   "peerDependencies": {
     "react": "^18.3.0 || ^19.0.0",
-    "react-dom": "^18.3.0 || ^19.0.0"
+    "react-dom": "^18.3.0 || ^19.0.0",
+    "drizzle-orm": "^0.45.0"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.16",
@@ -48,14 +92,11 @@
     "@labebal/core": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.5.2",
-    "drizzle-orm": "^0.45.4",
-    "lucide-react": "^1.74.0",
     "postgres": "^4.1.1",
     "radix-ui": "^1.8.1",
     "shadcn": "^4.23.0",
     "sonner": "^2.0.8",
     "tw-animate-css": "^1.4.0",
-    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz",
     "zod": "^4.6.7",
     "zustand": "^5.1.0"
   },
@@ -70,7 +111,8 @@
     "react-dom": "19.3.0",
     "tailwindcss": "^4.3.5",
     "typescript": "^5",
-    "vitest": "^5.1.0"
-  },
-  "license": "MIT"
+    "vitest": "^5.1.0",
+    "drizzle-orm": "^0.45.0",
+    "xlsx": "https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz"
+  }
 }

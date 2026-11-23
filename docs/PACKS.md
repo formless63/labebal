@@ -3,13 +3,12 @@
 A pack is a set of templates, labels, datasets, images and fonts kept as plain
 files in a git repo (or one bundled JSON file). People add the pack's link in
 **Settings > Packs**, pick the packs they want, and get updates when you bump the
-version. Nothing is hard-coded in the app: a fresh install starts with an empty
-library, and the samples are the built-in **Examples** pack (listed, not installed).
+version. Nothing is hard-coded in the app: even the samples on a fresh install are built-in packs you can turn off.
 
 Code: core `packages/core/src/pack.ts` (format, CSV, links, merge rules; tests in
 `packages/core/test/pack.test.ts`), app `packages/app/src/server/packs.ts`,
 `packages/app/src/features/packs/*`, tables `label_pack_sources`, `label_packs`,
-`label_pack_items`. Endpoints: `docs/API.md` (Packs).
+`label_pack_items`. Endpoints: [api](API.md) (Packs).
 
 ## Layout
 
@@ -87,7 +86,7 @@ base64); on a collection it writes a `labebal.packs` file with every pack. Host 
 `packs/schema/*.schema.json` (generated from the zod schemas: `pnpm packs schema`): manifest, collection,
 template files and label files. Point `$schema` at them for autocomplete in VS Code. The template schema
 only checks the outline (`id`, `name`, `schema: 2`, `design`, `root`, `fields`); the full document model is
-in `docs/TEMPLATES.md` and core `schema.ts`.
+in [templates](TEMPLATES.md) and core `schema.ts`.
 
 ## Authoring workflow
 
@@ -124,7 +123,7 @@ for GitHub sources; redirects to other hosts drop it). Server backups include it
 Settings > Packs > **GitHub** does the GitHub side for you (editors and admins see it).
 Code: `packages/app/src/server/github.ts` (accounts, device flow, repos), `server/github-publish.ts`,
 `features/github/*`; tables `label_github_accounts`, `label_github_published`,
-`label_pack_source_github`, `label_pack_update_skips`. Server setup: `docs/DEPLOY.md` (GitHub).
+`label_pack_source_github`, `label_pack_update_skips`. Server setup: [deploy](DEPLOY.md) (GitHub).
 
 ### Connect
 
@@ -202,10 +201,11 @@ until the next one) or **Later**. The counts are a dry run of the same rules as 
 
 ## Built-in packs
 
-`packages/app/packs/examples` and `packages/app/packs/standards` ship with the module (Docker copies `packages/app/packs`;
-`LABEBAL_BUILTIN_PACKS` points to the Examples folder elsewhere, Standard formats is read from its sibling `standards`).
-Both are listed under "Built-in packs" and read from disk only.
+`packages/app/packs/examples`, `standards` and `welcome` ship with the module (Docker copies `packages/app/packs`;
+`LABEBAL_BUILTIN_PACKS` points to the Examples folder elsewhere, the others are read from its siblings `standards` and `welcome`).
+All are listed under "Built-in packs" and read from disk only.
 
+- **Label Muncher** (`welcome`): installed on a new, empty library, so there is something to print.
 - **Examples**: listed, not installed by default.
 - **Standard formats**: installed (enabled) the first time the built-in source offers it; turn it off or remove it
   in Settings > Packs and it stays that way. Templates after common label standards: GS1 logistic label (SSCC) and

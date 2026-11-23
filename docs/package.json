@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "openapi": "tsx scripts/openapi.ts",
+    "typedoc": "typedoc",
+    "dev": "pnpm openapi && pnpm typedoc && vitepress dev .",
+    "build": "pnpm openapi && pnpm typedoc && vitepress build .",
+    "preview": "vitepress preview ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "typedoc": "^0.28.20",
+    "typedoc-plugin-markdown": "^4.14.1",
+    "typedoc-vitepress-theme": "^1.1.4",
+    "typescript": "^5.9.3",
+    "vitepress": "1.6.4",
+    "vitepress-openapi": "^0.2.16",
+    "vue": "^3.5.46"
+  }
+}

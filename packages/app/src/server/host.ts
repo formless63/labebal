@@ -7,6 +7,7 @@
  * A host app calls `createLabebalServer(options)` (./index.ts), which stores
  * the options here for the rest of the server code to read.
  */
+import { existsSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { DB } from "../db";
@@ -97,9 +98,22 @@ export const featureOn = (name: keyof NonNullable<LabebalServerOptions["features
 export function filesDir(): string {
   const set = host().filesDir ?? env().LABEBAL_FILES_DIR;
   if (set) return path.resolve(set);
-  // src/server/host.ts (source) or dist/server.js (built package) -> package root.
-  const here = path.dirname(fileURLToPath(import.meta.url));
-  return path.basename(here) === "server" ? path.resolve(here, "../..") : path.resolve(here, "..");
+  return (found ??= findFiles());
+}
+
+let found: string | undefined;
+
+/** The package folder, or (when a bundler moved this code) the installed package under the working directory. */
+function findFiles(): string {
+  const candidates: string[] = [];
+  try {
+    // src/server/host.ts or dist/server/host.js -> package root.
+    candidates.push(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../.."));
+  } catch {
+    // A bundler gave this module a URL that isn't a file.
+  }
+  candidates.push(path.join(/* turbopackIgnore: true */ process.cwd(), "node_modules", "@labebal", "app"));
+  return candidates.find((d) => existsSync(path.join(d, "drizzle", "meta"))) ?? candidates[0];
 }
 
 export const migrationsFolder = () => path.join(filesDir(), "drizzle");

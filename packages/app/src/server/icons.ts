@@ -62,25 +62,25 @@ type IconifySetId = "mdi" | "lucide" | "game-icons" | "simple-icons";
 const ICONIFY: Record<IconifySetId, { label: string; info: () => Promise<{ default: unknown }>; icons: () => Promise<{ default: unknown }>; meta?: () => Promise<{ default: unknown }>; note?: string }> = {
   mdi: {
     label: "Material",
-    info: () => import("@iconify-json/mdi/info.json"),
-    icons: () => import("@iconify-json/mdi/icons.json"),
-    meta: () => import("@iconify-json/mdi/metadata.json"),
+    info: () => import("@iconify-json/mdi/info.json", { with: { type: "json" } }),
+    icons: () => import("@iconify-json/mdi/icons.json", { with: { type: "json" } }),
+    meta: () => import("@iconify-json/mdi/metadata.json", { with: { type: "json" } }),
   },
   lucide: {
     label: "Lucide",
-    info: () => import("@iconify-json/lucide/info.json"),
-    icons: () => import("@iconify-json/lucide/icons.json"),
+    info: () => import("@iconify-json/lucide/info.json", { with: { type: "json" } }),
+    icons: () => import("@iconify-json/lucide/icons.json", { with: { type: "json" } }),
   },
   "game-icons": {
     label: "Game",
-    info: () => import("@iconify-json/game-icons/info.json"),
-    icons: () => import("@iconify-json/game-icons/icons.json"),
+    info: () => import("@iconify-json/game-icons/info.json", { with: { type: "json" } }),
+    icons: () => import("@iconify-json/game-icons/icons.json", { with: { type: "json" } }),
     note: "Game Icons are CC BY 3.0: credit game-icons.net if you publish labels using them.",
   },
   "simple-icons": {
     label: "Brands",
-    info: () => import("@iconify-json/simple-icons/info.json"),
-    icons: () => import("@iconify-json/simple-icons/icons.json"),
+    info: () => import("@iconify-json/simple-icons/info.json", { with: { type: "json" } }),
+    icons: () => import("@iconify-json/simple-icons/icons.json", { with: { type: "json" } }),
     note: "Brand logos are trademarks of their owners. Use them only to say what a part is for or fits.",
   },
 };
@@ -154,11 +154,11 @@ let tablerOutline: Promise<IconNodes> | null = null;
 let tablerFilled: Promise<IconNodes> | null = null;
 const loadTablerNodes = (variant: "outline" | "filled") =>
   variant === "outline"
-    ? (tablerOutline ??= import("@tabler/icons/tabler-nodes-outline.json").then((m) => m.default as unknown as IconNodes))
-    : (tablerFilled ??= import("@tabler/icons/tabler-nodes-filled.json").then((m) => m.default as unknown as IconNodes));
+    ? (tablerOutline ??= import("@tabler/icons/tabler-nodes-outline.json", { with: { type: "json" } }).then((m) => m.default as unknown as IconNodes))
+    : (tablerFilled ??= import("@tabler/icons/tabler-nodes-filled.json", { with: { type: "json" } }).then((m) => m.default as unknown as IconNodes));
 
 const tablerEntries = async (): Promise<Entry[]> =>
-  Object.values((await import("@tabler/icons/icons.json")).default as unknown as Record<string, TablerMeta>).map((m) => ({
+  Object.values((await import("@tabler/icons/icons.json", { with: { type: "json" } })).default as unknown as Record<string, TablerMeta>).map((m) => ({
     set: DEFAULT_ICON_SET,
     name: m.name,
     aliases: [],

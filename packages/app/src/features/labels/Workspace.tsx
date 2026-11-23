@@ -17,7 +17,8 @@ export function Workspace() {
   const label = lib?.labels.find((l) => l.id === selected);
 
   useEffect(() => {
-    if (lib && !label && lib.labels[0]) select(lib.labels[0].id);
+    const first = lib && (lib.labels.find((l) => l.tags?.includes("welcome")) ?? lib.labels[0]);
+    if (!label && first) select(first.id);
   }, [lib, label, select]);
 
   return (

@@ -7,6 +7,7 @@ labebal's own code is MIT (see [LICENSE](LICENSE)). It includes or uses:
 | Atkinson Hyperlegible Next, Roboto Condensed, JetBrains Mono | `packages/app/assets/fonts` | SIL OFL 1.1 (texts in `packages/app/assets/fonts/licenses`) |
 | [niimbluelib](https://github.com/MultiMote/niimbluelib) | npm dependency | MIT |
 | [bwip-js](https://github.com/metafloor/bwip-js) | npm dependency | MIT |
+| [SheetJS](https://sheetjs.com) CE 0.20.3, © SheetJS LLC | bundled in `@labebal/app` (`dist/vendor/xlsx.js`) | Apache 2.0 |
 | [Tabler Icons](https://tabler.io/icons) | npm dependency | MIT |
 | [Lucide](https://lucide.dev) | npm dependency | ISC |
 | [Material Design Icons](https://pictogrammers.com/library/mdi/) | npm dependency | Apache 2.0 |

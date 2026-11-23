@@ -12,7 +12,8 @@ import type { Font } from "opentype.js";
 import type { PixelFont } from "./fonts";
 
 // ESM build exports `parse`; Node loading the CJS build only exposes it on the default export.
-const parse: typeof opentype.parse = opentype.parse ?? (opentype as unknown as { default: typeof opentype }).default.parse;
+// (Reflect.get: bundlers reject a direct `.default` on the ESM build.)
+const parse: typeof opentype.parse = opentype.parse ?? (Reflect.get(opentype, "default") as typeof opentype).parse;
 
 export interface FontInfo {
   family: string;
