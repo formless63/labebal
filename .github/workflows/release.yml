@@ -26,16 +26,17 @@ jobs:
           done
       - run: pnpm test
       - run: mkdir out && for p in core app; do (cd packages/$p && pnpm pack --pack-destination ../../out); done
+      - name: GitHub release
+        run: gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && gh release upload "$GITHUB_REF_NAME" out/*.tgz --clobber || gh release create "$GITHUB_REF_NAME" out/*.tgz --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
       # Trusted publishing (no token stored): set up once per package on npmjs.com.
       - name: Publish to npm
         run: |
           npm install -g npm@latest
           for p in core app; do
             name="@labebal/$p"; v="${GITHUB_REF_NAME#v}"
+            npm view "$name" name >/dev/null 2>&1 || { echo "::warning::$name is not on npm yet: the first publish is manual (npm publish the release .tgz), then add a trusted publisher"; continue; }
             if npm view "$name@$v" version >/dev/null 2>&1; then echo "$name@$v is already published"; continue; fi
             npm publish "./out/labebal-$p-$v.tgz" --access public --provenance
           done
-      - name: GitHub release
-        run: gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 && gh release upload "$GITHUB_REF_NAME" out/*.tgz --clobber || gh release create "$GITHUB_REF_NAME" out/*.tgz --generate-notes
-        env:
-          GH_TOKEN: ${{ github.token }}

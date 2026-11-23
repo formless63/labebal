@@ -172,6 +172,29 @@ pnpm --filter labebal-example-vite-host dev
 
 Then open http://localhost:5180/labels.
 
+## Install without npm
+
+Every [release](https://github.com/formless63/labebal/releases) also carries both
+packages as `.tgz` files. Point both at the same release, and override the copy
+`@labebal/app` asks for:
+
+```json
+{
+  "dependencies": {
+    "@labebal/core": "https://github.com/formless63/labebal/releases/download/v0.1.0/labebal-core-0.1.0.tgz",
+    "@labebal/app": "https://github.com/formless63/labebal/releases/download/v0.1.0/labebal-app-0.1.0.tgz"
+  },
+  "overrides": { "@labebal/core": "$@labebal/core" }
+}
+```
+
+That is the npm form. With pnpm the override goes in `pnpm-workspace.yaml`:
+
+```yaml
+overrides:
+  "@labebal/core": https://github.com/formless63/labebal/releases/download/v0.1.0/labebal-core-0.1.0.tgz
+```
+
 ## Versions
 
 Both packages are released together with the same version number. Before 1.0, a
