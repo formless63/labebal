@@ -1,6 +1,6 @@
 {
   "name": "@labebal/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Label engine: document schema, reflow layout, 1-bit renderer, codes, packs and printer drivers (Niimbot, Brother P-touch, ZPL). Framework-free.",
   "keywords": [
     "label",

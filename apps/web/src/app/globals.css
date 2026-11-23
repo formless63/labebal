@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import "@labebal/app/shadcn.css";
 /* labebal screens (the module), themed by the tokens below. */
 @import "@labebal/app/tailwind.css";
 

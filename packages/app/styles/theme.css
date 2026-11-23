@@ -9,7 +9,7 @@
  * Dark mode follows a "dark" class on <html> or any ancestor.
  */
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import "./shadcn.css";
 
 @custom-variant dark (&:is(.dark *));
 
