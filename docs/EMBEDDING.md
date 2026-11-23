@@ -139,7 +139,9 @@ shadcn/ui tokens and a theme switcher:
 labebal uses shadcn's colour tokens (`bg-background`, `text-muted-foreground`,
 `border-border`, ...), so whatever theme the host applies, labebal follows. A
 Tailwind host without shadcn tokens also imports `@labebal/app/theme.css`
-(default neutral tokens plus the Tailwind mapping).
+(default neutral tokens plus the Tailwind mapping). A host with its own tokens that
+does not import `shadcn/tailwind.css` adds `@labebal/app/shadcn.css`, and
+`tw-animate-css` if it lacks that too.
 
 **2. Prebuilt (no Tailwind needed).**
 
