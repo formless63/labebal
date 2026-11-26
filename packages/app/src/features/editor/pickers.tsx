@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { cn } from "../../lib/utils";
 import { Button } from "../../components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../../components/ui/popover";
+import { assetUrl } from "@labebal/core";
 import { apiRoot } from "../../lib/base";
 
 interface AssetInfo {
@@ -61,7 +62,7 @@ export function ImagePicker({ value, onChange }: { value: string; onChange: (src
           <Button variant="outline" size="sm" className="w-full justify-start gap-2 overflow-hidden">
             {value && !value.includes("{{") ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={value} alt="" className="size-5 rounded-sm object-contain" />
+              <img src={assetUrl(value)} alt="" className="size-5 rounded-sm object-contain" />
             ) : (
               <IconPhotoUp />
             )}
@@ -101,7 +102,7 @@ export function ImagePicker({ value, onChange }: { value: string; onChange: (src
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={a.url} alt={a.name} className="size-full object-contain" loading="lazy" />
+                <img src={assetUrl(a.url)} alt={a.name} className="size-full object-contain" loading="lazy" />
               </button>
             ))}
           </div>

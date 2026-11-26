@@ -9,7 +9,7 @@
  */
 import { lazy, Suspense, useEffect, useState, type ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { setFontBase, setLabelUrlBase } from "@labebal/core";
+import { setAssetBase, setFontBase, setLabelUrlBase } from "@labebal/core";
 import { AppShell } from "./components/app-shell";
 import { DialogHost } from "./components/dialogs";
 import { Toaster } from "./components/ui/sonner";
@@ -121,6 +121,7 @@ export function LabebalApp({ basePath, router, chrome = "full", className, servi
   // Set before the first child renders: every link and API URL reads it.
   setBasePath(basePath);
   setFontBase(`${apiRoot()}/static`);
+  setAssetBase(apiRoot());
   const [own] = useState(() => new QueryClient({ defaultOptions: { queries: { refetchOnWindowFocus: false } } }));
   const [portal, setPortal] = useState<HTMLDivElement | null>(null);
   const dark = useDarkClass(colorScheme);

@@ -183,8 +183,8 @@ packages as `.tgz` files. Point both at the same release, and override the copy
 ```json
 {
   "dependencies": {
-    "@labebal/core": "https://github.com/formless63/labebal/releases/download/v0.1.2/labebal-core-0.1.2.tgz",
-    "@labebal/app": "https://github.com/formless63/labebal/releases/download/v0.1.2/labebal-app-0.1.2.tgz"
+    "@labebal/core": "https://github.com/formless63/labebal/releases/download/v0.1.3/labebal-core-0.1.3.tgz",
+    "@labebal/app": "https://github.com/formless63/labebal/releases/download/v0.1.3/labebal-app-0.1.3.tgz"
   },
   "overrides": { "@labebal/core": "$@labebal/core" }
 }
@@ -197,7 +197,7 @@ for a dependency of a dependency unless told otherwise:
 ```yaml
 blockExoticSubdeps: false
 overrides:
-  "@labebal/core": https://github.com/formless63/labebal/releases/download/v0.1.2/labebal-core-0.1.2.tgz
+  "@labebal/core": https://github.com/formless63/labebal/releases/download/v0.1.3/labebal-core-0.1.3.tgz
 ```
 
 ## Versions

@@ -17,6 +17,7 @@ import { makeCanvas, maskOf, paintMask } from "./paint";
 import { resolveLabel } from "./rules";
 import { labelContext } from "./tokens";
 import { inlineIconIds } from "./richtext";
+import { assetUrl } from "./fonts";
 import { resolveTemplate } from "./parts";
 import {
   BOUND_PROPS,
@@ -115,7 +116,7 @@ async function loadImage(src: string) {
   if (!p) {
     p = (async () => {
       try {
-        const res = await fetch(src);
+        const res = await fetch(assetUrl(src));
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         let blob = await res.blob();
         let size: { w: number; h: number } | null = null;

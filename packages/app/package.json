@@ -1,6 +1,6 @@
 {
   "name": "@labebal/app",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "labebal as a module: label designer and printing screens (React) plus a fetch-standard server handler (Postgres).",
   "keywords": [
     "label",

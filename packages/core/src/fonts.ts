@@ -112,8 +112,27 @@ let fontBase = "";
 export const setFontBase = (base: string) => {
   fontBase = base.replace(/\/+$/, "");
 };
+let apiBase = "";
+/**
+ * Where labebal's API is mounted, e.g. setAssetBase("/labels/api"). Stored
+ * documents keep the portable "/api/assets/<id>" form, and this prefix is
+ * applied when the browser loads one. Default "" = "/api" at the site root.
+ */
+export const setAssetBase = (base: string) => {
+  apiBase = base.replace(/\/+$/, "");
+};
+/**
+ * A stored font or picture URL as the browser should load it: built-in fonts
+ * ("/fonts/...") and uploaded assets ("/api/assets/...") follow the mount;
+ * anything else (data:, https:, blob:) is unchanged.
+ */
+export const assetUrl = (url: string) => {
+  if (url.startsWith("/fonts/")) return fontBase + url;
+  if (apiBase && url.startsWith("/api/assets/")) return apiBase + url.slice(4);
+  return url;
+};
 /** A font's URL as the browser should load it. */
-export const fontUrl = (url: string) => (url.startsWith("/fonts/") ? fontBase + url : url);
+export const fontUrl = assetUrl;
 
 export async function loadFonts(families?: string[]) {
   if (typeof document === "undefined") return;
